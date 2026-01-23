@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BOA — The Bureau of Assassination</title>
+  <style>
+    /* ========== CYBER DARK NEON THEME ========== */
+    :root {
+      --bg: #05060b;
+      --neon-cyan: #00ffea;
+      --neon-magenta: #ff00d6;
+      --text: #cfefff;
+      --dark: #0b0b12;
+      --glow-cyan: 0 0 20px rgba(0, 255, 234, 0.7);
+      --glow-magenta: 0 0 30px rgba(255, 0, 214, 0.7);
+    }
+
+    * { 
+      box-sizing: border-box; 
+    }
+
+    body {
+      margin: 0;
+      font-family: "Courier New", monospace;
+      background: radial-gradient(circle at top, #101026, var(--bg) 70%);
+      color: var(--text);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* Background grid animation */
+    .grid {
+      position: fixed;
+      inset: 0;
+      background:
+        linear-gradient(to right, rgba(0,255,234,0.1) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,0,214,0.08) 1px, transparent 1px);
+      background-size: 70px 70px;
+      opacity: 0.25;
+      pointer-events: none;
+      animation: gridShift 40s linear infinite;
+      z-index: -1;
+    }
+
+    @keyframes gridShift {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(-200px, 200px); }
+    }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ========== LANDING SECTION ========== */
+    .landing {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .landing::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(0,255,234,0.05), transparent 60%);
+      pointer-events: none;
+    }
+
+    .landing-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .landing h1 {
+      font-size: 72px;
+      font-weight: bold;
+      letter-spacing: 4px;
+      margin: 0;
+      line-height: 1.2;
+      text-shadow: 
+        0 0 30px rgba(0, 255, 234, 0.8),
+        0 0 60px rgba(255, 0, 214, 0.6);
+      animation: glitchText 3s ease-in-out infinite;
+      color: var(--neon-cyan);
+    }
+
+    @keyframes glitchText {
+      0%, 100% { text-shadow: 0 0 30px rgba(0, 255, 234, 0.8), 0 0 60px rgba(255, 0, 214, 0.6); }
+      50% { text-shadow: 0 0 50px rgba(255, 0, 214, 0.9), 0 0 80px rgba(0, 255, 234, 0.7); }
+    }
+
+    .landing .tagline {
+      font-size: 24px;
+      color: rgba(207, 239, 255, 0.9);
+      margin-top: 20px;
+      letter-spacing: 1px;
+      animation: pulse-text 2.5s ease-in-out infinite;
+    }
+
+    @keyframes pulse-text {
+      0%, 100% { opacity: 0.8; }
+      50% { opacity: 1; }
+    }
+
+    /* ========== CARDS ========== */
+    .card {
+      background: rgba(10, 10, 18, 0.7);
+      border: 1px solid rgba(0, 255, 234, 0.4);
+      border-radius: 16px;
+      padding: 40px;
+      margin: 40px 0;
+      box-shadow: 
+        0 0 20px rgba(0, 255, 234, 0.3),
+        inset 0 0 20px rgba(0, 255, 234, 0.05);
+      animation: glowPulse 5s ease-in-out infinite;
+      backdrop-filter: blur(5px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(0, 255, 234, 0.02), rgba(255, 0, 214, 0.02));
+      pointer-events: none;
+    }
+
+    .card > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    @keyframes glowPulse {
+      0%, 100% { 
+        box-shadow: 
+          0 0 20px rgba(0, 255, 234, 0.3),
+          inset 0 0 20px rgba(0, 255, 234, 0.05);
+      }
+      50% { 
+        box-shadow: 
+          0 0 40px rgba(255, 0, 214, 0.4),
+          inset 0 0 30px rgba(255, 0, 214, 0.08);
+      }
+    }
+
+    .card h2 {
+      font-size: 28px;
+      color: var(--neon-cyan);
+      text-shadow: 0 0 15px rgba(0, 255, 234, 0.7);
+      margin-top: 0;
+      margin-bottom: 20px;
+      letter-spacing: 2px;
+    }
+
+    .card p {
+      color: rgba(207, 239, 255, 0.85);
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    /* ========== AUTHOR CARDS ========== */
+    .authors-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      margin-top: 20px;
+    }
+
+    .author-card {
+      background: rgba(5, 6, 11, 0.8);
+      border: 1px solid rgba(255, 0, 214, 0.5);
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 0 25px rgba(255, 0, 214, 0.3);
+      transition: all 0.3s ease;
+      backdrop-filter: blur(5px);
+    }
+
+    .author-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 40px rgba(255, 0, 214, 0.5), inset 0 0 20px rgba(255, 0, 214, 0.1);
+      border-color: rgba(255, 0, 214, 0.8);
+    }
+
+    .author-card h3 {
+      font-size: 24px;
+      color: var(--neon-magenta);
+      text-shadow: 0 0 15px rgba(255, 0, 214, 0.7);
+      margin: 0 0 10px 0;
+      letter-spacing: 1px;
+    }
+
+    .author-role {
+      font-size: 12px;
+      color: var(--neon-cyan);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 15px;
+      opacity: 0.9;
+    }
+
+    .author-aura {
+      font-size: 14px;
+      color: rgba(207, 239, 255, 0.75);
+      font-style: italic;
+      line-height: 1.7;
+    }
+
+    /* ========== BOOK SUMMARY ========== */
+    .summary-text {
+      font-size: 18px;
+      line-height: 1.9;
+      color: rgba(207, 239, 255, 0.9);
+    }
+
+    .summary-text .highlight {
+      color: var(--neon-cyan);
+      text-shadow: 0 0 10px rgba(0, 255, 234, 0.6);
+      font-weight: bold;
+    }
+
+    /* ========== ENCRYPTION TOOL ========== */
+    .encryption-controls {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    input {
+      width: 100%;
+      padding: 15px;
+      border-radius: 8px;
+      border: 1px solid rgba(0, 255, 234, 0.5);
+      background: rgba(0, 0, 0, 0.7);
+      color: var(--text);
+      font-family: "Courier New", monospace;
+      font-size: 14px;
+      transition: all 0.2s ease;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: var(--neon-cyan);
+      box-shadow: 0 0 15px rgba(0, 255, 234, 0.5);
+      background: rgba(0, 0, 0, 0.9);
+    }
+
+    .button-group {
+      display: flex;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .btn {
+      flex: 1;
+      background: linear-gradient(135deg, var(--neon-cyan), var(--neon-magenta));
+      border: none;
+      color: #000;
+      padding: 14px 20px;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: "Courier New", monospace;
+      font-size: 13px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      box-shadow: 0 0 15px rgba(0, 255, 234, 0.4);
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(255, 0, 214, 0.6);
+    }
+
+    .btn:active {
+      transform: scale(0.98);
+    }
+
+    #encOutput {
+      margin-top: 20px;
+      padding: 15px;
+      background: rgba(0, 255, 234, 0.08);
+      border: 1px solid rgba(0, 255, 234, 0.4);
+      border-radius: 8px;
+      color: var(--neon-cyan);
+      text-shadow: 0 0 10px rgba(0, 255, 234, 0.6);
+      font-weight: bold;
+      min-height: 50px;
+      display: flex;
+      align-items: center;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* ========== AUDIO VISUALIZER ========== */
+    .visualizer-container {
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(0, 255, 234, 0.6);
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 20px;
+      backdrop-filter: blur(5px);
+    }
+
+    canvas {
+      width: 100%;
+      height: 250px;
+      display: block;
+      border-radius: 8px;
+      background: radial-gradient(circle at center, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.95));
+      margin-top: 15px;
+    }
+
+    /* ========== FOOTER ========== */
+    .footer {
+      margin-top: 60px;
+      padding: 30px 0;
+      text-align: center;
+      font-size: 14px;
+      color: rgba(207, 239, 255, 0.6);
+      border-top: 1px solid rgba(0, 255, 234, 0.2);
+    }
+
+    .footer-link {
+      color: var(--neon-cyan);
+      text-decoration: none;
+      text-shadow: 0 0 10px rgba(0, 255, 234, 0.5);
+      transition: all 0.2s ease;
+    }
+
+    .footer-link:hover {
+      color: var(--neon-magenta);
+      text-shadow: 0 0 15px rgba(255, 0, 214, 0.6);
+    }
+
+    /* ========== AUDIO PLAYER ========== */
+    .audio-player {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: rgba(10, 10, 18, 0.95);
+      border: 1px solid rgba(0, 255, 234, 0.6);
+      border-radius: 12px;
+      padding: 15px 20px;
+      box-shadow: 0 0 30px rgba(0, 255, 234, 0.4);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      backdrop-filter: blur(10px);
+    }
+
+    .audio-toggle-btn {
+      background: linear-gradient(135deg, var(--neon-cyan), var(--neon-magenta));
+      border: none;
+      color: #000;
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 18px;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+
+    .audio-toggle-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 20px rgba(0, 255, 234, 0.6);
+    }
+
+    .audio-status {
+      color: var(--neon-cyan);
+      font-size: 12px;
+      text-shadow: 0 0 8px rgba(0, 255, 234, 0.6);
+      font-weight: bold;
+      min-width: 60px;
+    }
+
+    audio {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .audio-player {
+        bottom: 15px;
+        right: 15px;
+        padding: 10px 15px;
+      }
+
+      .audio-toggle-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+      }
+
+      .audio-status {
+        min-width: 50px;
+      }
+    }
+
+    /* ========== PAGE SECTIONS ========== */
+    .page-section {
+      display: none;
+    }
+
+    .page-section.active {
+      display: block;
+    }
+
+    .back-btn {
+      background: rgba(255, 0, 214, 0.8);
+      margin-bottom: 30px;
+    }
+
+    .back-btn:hover {
+      background: var(--neon-magenta);
+    }
+
+    /* ========== AUTHOR DETAIL PAGE ========== */
+    .author-detail {
+      background: rgba(5, 6, 11, 0.85);
+      border: 2px solid var(--neon-magenta);
+      border-radius: 16px;
+      padding: 50px;
+      margin: 40px 0;
+      box-shadow: 0 0 40px rgba(255, 0, 214, 0.4);
+      text-align: center;
+    }
+
+    .author-detail h2 {
+      font-size: 48px;
+      color: var(--neon-magenta);
+      text-shadow: 0 0 20px rgba(255, 0, 214, 0.8);
+      margin-bottom: 20px;
+    }
+
+    .author-detail .detail-content {
+      font-size: 18px;
+      color: rgba(207, 239, 255, 0.9);
+      line-height: 2;
+      text-align: left;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 30px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 0, 214, 0.3);
+    }
+
+    .author-detail .detail-content strong {
+      color: var(--neon-cyan);
+      text-shadow: 0 0 10px rgba(0, 255, 234, 0.6);
+    }
+
+    /* ========== BOOKS PAGE ========== */
+    .books-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      margin-top: 20px;
+    }
+
+    .book-card {
+      background: rgba(0, 255, 234, 0.08);
+      border: 1px solid rgba(0, 255, 234, 0.5);
+      border-radius: 12px;
+      padding: 30px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .book-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 30px rgba(0, 255, 234, 0.5);
+      border-color: var(--neon-cyan);
+    }
+
+    .book-card h3 {
+      font-size: 20px;
+      color: var(--neon-cyan);
+      text-shadow: 0 0 15px rgba(0, 255, 234, 0.6);
+      margin: 0 0 15px 0;
+    }
+
+    .book-card p {
+      color: rgba(207, 239, 255, 0.8);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .book-status {
+      margin-top: 15px;
+      padding: 10px;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 12px;
+    }
+
+    .book-status.available {
+      background: rgba(0, 255, 234, 0.2);
+      color: var(--neon-cyan);
+    }
+
+    .book-status.unavailable {
+      background: rgba(255, 0, 214, 0.2);
+      color: var(--neon-magenta);
+    }
+
+    /* ========== RELEASE DATES PAGE ========== */
+    .release-dates-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .release-card {
+      background: rgba(5, 6, 11, 0.8);
+      border: 1px solid rgba(0, 255, 234, 0.4);
+      border-radius: 12px;
+      padding: 25px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(0, 255, 234, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .release-card:hover {
+      box-shadow: 0 0 35px rgba(0, 255, 234, 0.4);
+      transform: scale(1.05);
+    }
+
+    .release-card h3 {
+      font-size: 18px;
+      color: var(--neon-cyan);
+      text-shadow: 0 0 12px rgba(0, 255, 234, 0.6);
+      margin: 0 0 15px 0;
+    }
+
+    .release-date {
+      font-size: 20px;
+      color: var(--neon-magenta);
+      text-shadow: 0 0 15px rgba(255, 0, 214, 0.6);
+      font-weight: bold;
+    }
+
+    .release-status {
+      font-size: 12px;
+      color: rgba(207, 239, 255, 0.6);
+      margin-top: 10px;
+      font-style: italic;
+    }
+
+    /* ========== NAV BUTTONS ========== */
+    .nav-buttons {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin: 20px 0;
+      flex-wrap: wrap;
+    }
+
+    .nav-btn {
+      background: linear-gradient(135deg, var(--neon-cyan), var(--neon-magenta));
+      padding: 12px 20px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-radius: 8px;
+      border: none;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 0 15px rgba(0, 255, 234, 0.3);
+    }
+
+    .nav-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(255, 0, 214, 0.5);
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 768px) {
+      .landing h1 {
+        font-size: 48px;
+      }
+
+      .landing .tagline {
+        font-size: 18px;
+      }
+
+      .card {
+        padding: 25px;
+        margin: 30px 0;
+      }
+
+      .authors-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .encryption-controls {
+        grid-template-columns: 1fr;
+      }
+
+      .summary-text {
+        font-size: 16px;
+      }
+
+      .author-detail {
+        padding: 25px;
+      }
+
+      .author-detail h2 {
+        font-size: 32px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="grid"></div>
+
+<!-- ========== BACKGROUND MUSIC PLAYER ========== -->
+<audio id="backgroundMusic" loop>
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+</audio>
+
+<div class="audio-player">
+  <button class="audio-toggle-btn" id="audioToggleBtn" title="Toggle Background Music">🔊</button>
+  <span class="audio-status" id="audioStatus">Music ON</span>
+</div>
+
+<!-- ========== MAIN PAGE ========== -->
+<div id="mainPage" class="page-section active">
+
+  <!-- ========== LANDING SECTION ========== -->
+  <section class="landing">
+    <div class="landing-content">
+      <h1>BOA — The Bureau of Assassination</h1>
+      <p class="tagline">"The world's deadliest threats don't make the news. They disappear."</p>
+      <div class="nav-buttons" style="margin-top: 40px;">
+        <button class="nav-btn" onclick="showPage('booksPage')">📚 View All Books</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+
+    <!-- ========== BOOK SUMMARY ========== -->
+    <div class="card">
+      <h2>📖 Mission Briefing</h2>
+      <p class="summary-text">
+        The world's <span class="highlight">deadliest threats</span> don't make the news. They disappear.
+      </p>
+      <p class="summary-text">
+        The <span class="highlight">Bureau of Assassination</span>—BOA—operates beyond borders, beyond law, and beyond denial.
+      </p>
+      <p class="summary-text">
+        When a covert operation deep beneath the earth goes <span class="highlight">catastrophically wrong</span>, BOA uncovers a <span class="highlight">weapon without limits</span>. 
+        A force powerful enough to rewrite global power.
+      </p>
+      <p class="summary-text">
+        <span class="highlight">Helicopters fall. Facilities burn. Classified assets vanish.</span>
+      </p>
+      <p class="summary-text">
+        The race against time stretches from underground bunkers to the vast expanse of space. 
+        The mission has begun. The truth is <span class="highlight">classified</span>. And <span class="highlight">nothing stays buried forever.</span>
+      </p>
+    </div>
+
+    <!-- ========== AUTHOR INFORMATION ========== -->
+    <div class="card">
+      <h2>✍️ The Architects</h2>
+      <p>
+        Two visionaries unite to bring you the Bureau of Assassination. Click on any author to learn more.
+      </p>
+      <div class="authors-grid">
+        <div class="author-card" onclick="showAuthorDetail('juan')" style="cursor: pointer;">
+          <h3>Juan Shijo</h3>
+          <div class="author-role">Main Author</div>
+          <div class="author-aura">
+            The visionary architect behind the BOA universe. Creator of the classified operations, 
+            the world-shattering conspiracy, and the dark military-tech aesthetic that defines this thriller.
+          </div>
+          <p style="color: var(--neon-cyan); font-size: 12px; margin-top: 15px;">Click to view details →</p>
+        </div>
+        <div class="author-card" onclick="showAuthorDetail('evan')" style="cursor: pointer;">
+          <h3>Evan David Albert</h3>
+          <div class="author-role">Co-Author</div>
+          <div class="author-aura">
+            The collaborator shaping the conspiracy-driven intensity. Together, they weave a tale of 
+            betrayal, power, and survival that will grip readers from the first page.
+          </div>
+          <p style="color: var(--neon-cyan); font-size: 12px; margin-top: 15px;">Click to view details →</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== ENCRYPTION TOOL ========== -->
+    <div class="card">
+      <h2>🔐 Classified Encryption Tool</h2>
+      <p>
+        Access the BOA secure encryption terminal. Enter a number and encryption key to <span class="highlight">encode classified data</span>.
+        This tool uses XOR encryption—a simple yet powerful method for securing sensitive intelligence.
+      </p>
+      
+      <div class="encryption-controls">
+        <input id="inputNumber" placeholder="Enter number (e.g., 1234)" />
+        <input id="keyNumber" placeholder="Enter encryption key (e.g., 999)" />
+      </div>
+
+      <div class="button-group">
+        <button class="btn" id="encryptBtn">Encrypt</button>
+        <button class="btn" id="decryptBtn">Decrypt</button>
+      </div>
+
+      <div id="encOutput"></div>
+    </div>
+
+    <!-- ========== AUDIO VISUALIZER ========== -->
+    <div class="card">
+      <h2>🎵 Live Intelligence Feed Visualizer</h2>
+      <p>
+        Activate the audio frequency analyzer. Grant microphone access and watch the <span class="highlight">digital heartbeat</span> 
+        of the surveillance network pulse in real-time. Cyan and magenta bars dance to the rhythm of the operation.
+      </p>
+
+      <div class="visualizer-container">
+        <button class="btn" id="startAudioBtn">Start Visualizer</button>
+        <canvas id="visualizerCanvas"></canvas>
+      </div>
+    </div>
+
+    <!-- ========== FOOTER WITH NAVIGATION ========== -->
+    <div class="footer">
+      <button class="nav-btn" onclick="showPage('releasePage')" style="margin-bottom: 15px;">📅 Release Dates</button>
+      <p>
+        <strong>Release Date:</strong> 10th February 2026<br>
+        <strong>Available on:</strong> <a href="https://www.amazon.com.au/BOA-Juan-Shijo-ebook/dp/B0GGZLY9M7/ref=sr_1_1?crid=JF1FBM7MRG53&dib=eyJ2IjoiMSJ9.mE9D7L14JjvP53bOtkG34gQNe4I5h_EYP20mpoBlYEwT9w5ywO3-5oSbMg9edTTP2afQh0NqRPUcp2Oy8V5WRzCNJTjNX1FvtOZolwzY9KSATJGZh8EAnLOx4z_S3q5Ozj6-YaNDAr3SdnZv2FkHMgHBZYLPfCUMER0qIpU7nOO9K_PgfemRorLd8xFPINIru21OC3B5DhUVGXyzIjV2k3BzCFV7ShSHtbwafCij6D8xQ_Vt-ZEsFpZozKgxsmg94Vc2I3KJmlQNBl22uGmDUcrVFSOalLGeDYxEeYlGXBk.HmGUeWnj94AC6tG5sPergXTusWJ2PD8TTVHcFWwtVWw&dib_tag=se&keywords=the+boa&qid=1768986537&sprefix=the+bo%2Caps%2C265&sr=8-1" class="footer-link" target="_blank">Amazon KDP</a>
+      </p>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- ========== AUTHOR DETAIL PAGE ========== -->
+<div id="authorPage" class="page-section">
+  <div class="container">
+    <button class="btn back-btn" onclick="showPage('mainPage')">← Back to Main</button>
+    
+    <div id="authorContent" class="card author-detail"></div>
+  </div>
+</div>
+
+<!-- ========== BOOKS PAGE ========== -->
+<div id="booksPage" class="page-section">
+  <div class="container">
+    <button class="btn back-btn" onclick="showPage('mainPage')">← Back to Main</button>
+    
+    <div class="card">
+      <h2>📚 The BOA Universe - Complete Book Series</h2>
+      <p style="color: rgba(207, 239, 255, 0.8); font-size: 16px; margin-bottom: 20px;">
+        Explore the complete BOA book series and its expansive universe of conspiracy, action, and intrigue.
+      </p>
+      
+      <div class="books-grid" id="booksGrid"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== RELEASE DATES PAGE ========== -->
+<div id="releasePage" class="page-section">
+  <div class="container">
+    <button class="btn back-btn" onclick="showPage('mainPage')">← Back to Main</button>
+    
+    <div class="card">
+      <h2>📅 BOA Book Release Schedule</h2>
+      <p style="color: rgba(207, 239, 255, 0.8); font-size: 16px; margin-bottom: 20px;">
+        The timeline for the entire BOA series. Some titles are in development.
+      </p>
+      
+      <div class="release-dates-grid" id="releaseDatesGrid"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ========== BACKGROUND MUSIC CONTROL ==========
+  const backgroundMusic = document.getElementById('backgroundMusic');
+  const audioToggleBtn = document.getElementById('audioToggleBtn');
+  const audioStatus = document.getElementById('audioStatus');
+  let isMusicPlaying = false;
+
+  // Set volume to moderate level
+  backgroundMusic.volume = 0.3;
+
+  audioToggleBtn.addEventListener('click', function() {
+    if (isMusicPlaying) {
+      backgroundMusic.pause();
+      audioToggleBtn.textContent = '🔇';
+      audioStatus.textContent = 'Music OFF';
+      isMusicPlaying = false;
+    } else {
+      backgroundMusic.play().catch(function(error) {
+        console.log('Autoplay prevented. User interaction required.');
+        audioStatus.textContent = 'Click to Play';
+      });
+      audioToggleBtn.textContent = '🔊';
+      audioStatus.textContent = 'Music ON';
+      isMusicPlaying = true;
+    }
+  });
+
+  // Attempt to autoplay on page load with user interaction fallback
+  window.addEventListener('load', function() {
+    const playPromise = backgroundMusic.play();
+    if (playPromise !== undefined) {
+      playPromise.then(function() {
+        isMusicPlaying = true;
+        audioToggleBtn.textContent = '🔊';
+        audioStatus.textContent = 'Music ON';
+      }).catch(function(error) {
+        // Autoplay was prevented
+        console.log('Autoplay prevented, waiting for user interaction');
+        audioStatus.textContent = 'Click to Play';
+        audioToggleBtn.textContent = '🔇';
+      });
+    }
+  });
+
+  // ========== PAGE NAVIGATION ==========
+  function showPage(pageId) {
+    // Hide all pages
+    document.querySelectorAll('.page-section').forEach(page => {
+      page.classList.remove('active');
+    });
+    
+    // Show selected page
+    document.getElementById(pageId).classList.add('active');
+    
+    // Scroll to top
+    window.scrollTo(0, 0);
+  }
+
+  // ========== AUTHOR DATA ==========
+  const authors = {
+    juan: {
+      name: 'Juan Shijo',
+      role: 'Main Author',
+      bio: 'Juan Shijo is the visionary architect behind the BOA universe. With a background in military thriller storytelling and high-tech narratives, Juan crafted the classified operations, the world-shattering conspiracy, and the dark military-tech aesthetic that defines this series.',
+      details: 'As the primary creator, Juan developed the core mythology of the Bureau of Assassination, designing intricate conspiracies that span continents, underground bunkers, and even space. His work emphasizes the tension between secrecy and survival, power and morality.',
+      specialties: ['World Building', 'Conspiracy Narratives', 'Military Technology', 'Action Sequences']
+    },
+    evan: {
+      name: 'Evan David Albert',
+      role: 'Co-Author',
+      bio: 'Evan David Albert is the collaborator shaping the conspiracy-driven intensity of the BOA universe. His expertise in character development and psychological thriller elements brings depth to the narrative.',
+      details: 'Evan brings a mastery of human drama to the series, weaving tales of betrayal, power struggles, and survival that grip readers from the first page. Together with Juan, they create a universe that is both technically sophisticated and emotionally compelling.',
+      specialties: ['Character Development', 'Plot Structure', 'Psychological Tension', 'Narrative Depth']
+    }
+  };
+
+  function showAuthorDetail(authorKey) {
+    const author = authors[authorKey];
+    const authorContent = document.getElementById('authorContent');
+    
+    let specialtiesList = author.specialties.map(s => `• ${s}`).join('<br>');
+    
+    authorContent.innerHTML = `
+      <h2>${author.name}</h2>
+      <div style="margin: 30px 0; font-size: 16px;">
+        <p><strong>Role:</strong> ${author.role}</p>
+      </div>
+      <div class="detail-content">
+        <p><strong>About:</strong></p>
+        <p>${author.bio}</p>
+        <br>
+        <p><strong>Contributions to BOA:</strong></p>
+        <p>${author.details}</p>
+        <br>
+        <p><strong>Specialties:</strong></p>
+        <p>${specialtiesList}</p>
+      </div>
+    `;
+    
+    showPage('authorPage');
+  }
+
+  // ========== BOOKS DATA ==========
+  const books = [
+    { number: 1, title: 'The Bureau of Assassination', description: 'The first operation. Where it all begins.', amazonLink: 'https://www.amazon.com.au/BOA-Juan-Shijo-ebook/dp/B0GGZLY9M7/ref=sr_1_1?crid=JF1FBM7MRG53&dib=eyJ2IjoiMSJ9.mE9D7L14JjvP53bOtkG34gQNe4I5h_EYP20mpoBlYEwT9w5ywO3-5oSbMg9edTTP2afQh0NqRPUcp2Oy8V5WRzCNJTjNX1FvtOZolwzY9KSATJGZh8EAnLOx4z_S3q5Ozj6-YaNDAr3SdnZv2FkHMgHBZYLPfCUMER0qIpU7nOO9K_PgfemRorLd8xFPINIru21OC3B5DhUVGXyzIjV2k3BzCFV7ShSHtbwafCij6D8xQ_Vt-ZEsFpZozKgxsmg94Vc2I3KJmlQNBl22uGmDUcrVFSOalLGeDYxEeYlGXBk.HmGUeWnj94AC6tG5sPergXTusWJ2PD8TTVHcFWwtVWw&dib_tag=se&keywords=the+boa&qid=1768986537&sprefix=the+bo%2Caps%2C265&sr=8-1' },
+    { number: 2, title: 'N/A', description: 'Coming soon...', amazonLink: null },
+    { number: 3, title: 'N/A', description: 'Coming soon...', amazonLink: null },
+    { number: 4, title: 'N/A', description: 'Coming soon...', amazonLink: null },
+    { number: 5, title: 'N/A', description: 'Coming soon...', amazonLink: null },
+    { number: 6, title: 'N/A', description: 'Coming soon...', amazonLink: null },
+    { number: 7, title: 'N/A', description: 'Coming soon...', amazonLink: null },
+    { number: 8, title: 'N/A', description: 'Coming soon...', amazonLink: null },
+    { number: 9, title: 'N/A', description: 'Coming soon...', amazonLink: null }
+  ];
+
+  // Populate books grid
+  function populateBooksGrid() {
+    const booksGrid = document.getElementById('booksGrid');
+    booksGrid.innerHTML = books.map((book, index) => {
+      const isAvailable = book.number === 1;
+      const statusClass = isAvailable ? 'available' : 'unavailable';
+      const statusText = isAvailable ? '✓ AVAILABLE' : '⏳ NOT FINISHED';
+      const buyButton = isAvailable ? `<a href="${book.amazonLink}" target="_blank" class="btn" style="display: inline-block; margin-top: 15px; text-decoration: none;">📚 Get on Amazon</a>` : '';
+      
+      return `
+        <div class="book-card">
+          <h3>Book ${book.number}</h3>
+          <p style="font-size: 16px; font-weight: bold; color: var(--neon-cyan); margin: 15px 0;">${book.title}</p>
+          <p>${book.description}</p>
+          <div class="book-status ${statusClass}">${statusText}</div>
+          ${buyButton}
+        </div>
+      `;
+    }).join('');
+  }
+
+  // ========== RELEASE DATES DATA ==========
+  const releaseSchedule = [
+    { number: 1, title: 'The Bureau of Assassination', date: '10/2/2026', status: 'Released', amazonLink: 'https://www.amazon.com.au/BOA-Juan-Shijo-ebook/dp/B0GGZLY9M7/ref=sr_1_1?crid=JF1FBM7MRG53&dib=eyJ2IjoiMSJ9.mE9D7L14JjvP53bOtkG34gQNe4I5h_EYP20mpoBlYEwT9w5ywO3-5oSbMg9edTTP2afQh0NqRPUcp2Oy8V5WRzCNJTjNX1FvtOZolwzY9KSATJGZh8EAnLOx4z_S3q5Ozj6-YaNDAr3SdnZv2FkHMgHBZYLPfCUMER0qIpU7nOO9K_PgfemRorLd8xFPINIru21OC3B5DhUVGXyzIjV2k3BzCFV7ShSHtbwafCij6D8xQ_Vt-ZEsFpZozKgxsmg94Vc2I3KJmlQNBl22uGmDUcrVFSOalLGeDYxEeYlGXBk.HmGUeWnj94AC6tG5sPergXTusWJ2PD8TTVHcFWwtVWw&dib_tag=se&keywords=the+boa&qid=1768986537&sprefix=the+bo%2Caps%2C265&sr=8-1' },
+    { number: 2, title: 'BOA: Underground', date: 'Not Finished', status: 'In Development', amazonLink: null },
+    { number: 3, title: 'BOA: Ascension', date: 'Not Finished', status: 'In Development', amazonLink: null },
+    { number: 4, title: 'BOA: Black Protocol', date: 'Not Finished', status: 'In Development', amazonLink: null },
+    { number: 5, title: 'BOA: Silent War', date: 'Not Finished', status: 'In Development', amazonLink: null },
+    { number: 6, title: 'BOA: Classified', date: 'Not Finished', status: 'In Development', amazonLink: null },
+    { number: 7, title: 'BOA: Endgame', date: 'Not Finished', status: 'In Development', amazonLink: null },
+    { number: 8, title: 'BOA: Revelation', date: 'Not Finished', status: 'In Development', amazonLink: null },
+    { number: 9, title: 'BOA: Final Operation', date: 'Not Finished', status: 'In Development', amazonLink: null }
+  ];
+
+  // Populate release dates grid
+  function populateReleaseDates() {
+    const releaseDatesGrid = document.getElementById('releaseDatesGrid');
+    releaseDatesGrid.innerHTML = releaseSchedule.map((book) => {
+      const buyButton = book.amazonLink ? `<a href="${book.amazonLink}" target="_blank" class="nav-btn" style="margin-top: 12px; display: inline-block; text-decoration: none; font-size: 11px;">Get Book</a>` : '';
+      return `
+        <div class="release-card">
+          <h3>Book ${book.number}</h3>
+          <p style="font-size: 14px; color: rgba(207, 239, 255, 0.8); margin: 10px 0;">${book.title}</p>
+          <div class="release-date">${book.date}</div>
+          <div class="release-status">${book.status}</div>
+          ${buyButton}
+        </div>
+      `;
+    }).join('');
+  }
+
+  // Initialize pages on load
+  document.addEventListener('DOMContentLoaded', function() {
+    populateBooksGrid();
+    populateReleaseDates();
+  });
+
+  // ========== ENCRYPTION TOOL ==========
+  function xorEncrypt(value, key) {
+    return value ^ key;
+  }
+
+  document.getElementById("encryptBtn").onclick = () => {
+    const value = Number(document.getElementById("inputNumber").value);
+    const key = Number(document.getElementById("keyNumber").value);
+    
+    if (isNaN(value) || isNaN(key)) {
+      document.getElementById("encOutput").innerText = "ERROR: Invalid input. Please enter valid numbers.";
+      return;
+    }
+    
+    const encrypted = xorEncrypt(value, key);
+    document.getElementById("encOutput").innerText = `🔐 ENCRYPTED: ${encrypted}`;
+  };
+
+  document.getElementById("decryptBtn").onclick = () => {
+    const value = Number(document.getElementById("inputNumber").value);
+    const key = Number(document.getElementById("keyNumber").value);
+    
+    if (isNaN(value) || isNaN(key)) {
+      document.getElementById("encOutput").innerText = "ERROR: Invalid input. Please enter valid numbers.";
+      return;
+    }
+    
+    const decrypted = xorEncrypt(value, key);
+    document.getElementById("encOutput").innerText = `🔓 DECRYPTED: ${decrypted}`;
+  };
+
+  // ========== AUDIO VISUALIZER ==========
+  let audioVisualizerActive = false;
+
+  document.getElementById("startAudioBtn").onclick = async () => {
+    if (audioVisualizerActive) {
+      document.getElementById("startAudioBtn").innerText = "Start Visualizer";
+      audioVisualizerActive = false;
+      return;
+    }
+
+    try {
+      const canvas = document.getElementById("visualizerCanvas");
+      const ctx = canvas.getContext("2d");
+
+      const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      const analyser = audioCtx.createAnalyser();
+      analyser.fftSize = 256;
+
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      const source = audioCtx.createMediaStreamSource(stream);
+      source.connect(analyser);
+
+      const bufferLength = analyser.frequencyBinCount;
+      const dataArray = new Uint8Array(bufferLength);
+
+      canvas.width = canvas.clientWidth;
+      canvas.height = 250;
+
+      audioVisualizerActive = true;
+      document.getElementById("startAudioBtn").innerText = "Stop Visualizer";
+
+      function draw() {
+        if (!audioVisualizerActive) return;
+
+        requestAnimationFrame(draw);
+        analyser.getByteFrequencyData(dataArray);
+
+        // Clear with dark background
+        ctx.fillStyle = "rgba(5, 6, 11, 0.3)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        const barWidth = (canvas.width / bufferLength) * 2.5;
+        let x = 0;
+
+        for (let i = 0; i < bufferLength; i++) {
+          const barHeight = dataArray[i];
+          
+          // Alternate between cyan and magenta for a neon effect
+          if (i % 2 === 0) {
+            ctx.fillStyle = `rgba(0, 255, 234, ${0.5 + (barHeight / 255) * 0.5})`;
+            ctx.shadowColor = "rgba(0, 255, 234, 0.8)";
+          } else {
+            ctx.fillStyle = `rgba(255, 0, 214, ${0.5 + (barHeight / 255) * 0.5})`;
+            ctx.shadowColor = "rgba(255, 0, 214, 0.8)";
+          }
+          
+          ctx.shadowBlur = 10;
+          ctx.fillRect(x, canvas.height - barHeight / 2, barWidth, barHeight / 2);
+          x += barWidth + 1;
+        }
+      }
+
+      draw();
+    } catch (error) {
+      alert("Microphone access denied or not available. Please allow microphone permissions.");
+      audioVisualizerActive = false;
+    }
+  };
+</script>
+
+</body>
+</html>
