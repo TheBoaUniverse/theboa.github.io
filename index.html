@@ -1408,8 +1408,10 @@
 
     // Display all messages
     messages.forEach(msg => {
+      // Determine if this message belongs to the current user
+      const isOwnMessage = currentUser && msg.username === currentUser.username;
       const messageEl = document.createElement('div');
-      messageEl.className = msg.isOwn ? 'chat-message own' : 'chat-message';
+      messageEl.className = isOwnMessage ? 'chat-message own' : 'chat-message';
       messageEl.innerHTML = `
         <div class="message-user">${msg.username}</div>
         <div class="message-text">${msg.text}</div>
@@ -1431,8 +1433,7 @@
     messages.push({
       username: currentUser.username,
       text: message,
-      timestamp: new Date().toISOString(),
-      isOwn: true
+      timestamp: new Date().toISOString()
     });
     saveChatMessages(messages);
 
