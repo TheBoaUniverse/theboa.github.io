@@ -351,6 +351,304 @@
       text-shadow: 0 0 15px rgba(255, 0, 214, 0.6);
     }
 
+    /* ========== PROFILE BUTTON ========== */
+    .profile-btn {
+      position: fixed;
+      top: 30px;
+      right: 30px;
+      background: linear-gradient(135deg, var(--neon-magenta), var(--neon-cyan));
+      border: none;
+      color: #000;
+      padding: 12px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 14px;
+      z-index: 999;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 15px rgba(255, 0, 214, 0.4);
+    }
+
+    .profile-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(255, 0, 214, 0.6);
+    }
+
+    /* ========== LOGIN/SIGNUP MODAL ========== */
+    .auth-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(5, 6, 11, 0.95);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+      backdrop-filter: blur(10px);
+    }
+
+    .auth-modal.active {
+      display: flex;
+    }
+
+    .auth-container {
+      background: rgba(10, 10, 18, 0.9);
+      border: 2px solid var(--neon-cyan);
+      border-radius: 16px;
+      padding: 40px;
+      max-width: 400px;
+      width: 90%;
+      box-shadow: 0 0 50px rgba(0, 255, 234, 0.3);
+      position: relative;
+    }
+
+    .auth-container h2 {
+      font-size: 28px;
+      color: var(--neon-cyan);
+      text-shadow: 0 0 15px rgba(0, 255, 234, 0.7);
+      margin-top: 0;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .auth-tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 30px;
+    }
+
+    .auth-tab {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      background: rgba(0, 255, 234, 0.1);
+      color: var(--neon-cyan);
+      cursor: pointer;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(0, 255, 234, 0.4);
+    }
+
+    .auth-tab.active {
+      background: var(--neon-cyan);
+      color: #000;
+      box-shadow: 0 0 15px rgba(0, 255, 234, 0.6);
+    }
+
+    .auth-form {
+      display: none;
+    }
+
+    .auth-form.active {
+      display: block;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      color: var(--neon-cyan);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid rgba(0, 255, 234, 0.5);
+      background: rgba(0, 0, 0, 0.7);
+      color: var(--text);
+      font-family: "Courier New", monospace;
+      font-size: 14px;
+      transition: all 0.2s ease;
+    }
+
+    .form-group input:focus {
+      outline: none;
+      border-color: var(--neon-cyan);
+      box-shadow: 0 0 15px rgba(0, 255, 234, 0.5);
+      background: rgba(0, 0, 0, 0.9);
+    }
+
+    .auth-submit {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(135deg, var(--neon-cyan), var(--neon-magenta));
+      border: none;
+      color: #000;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      box-shadow: 0 0 15px rgba(0, 255, 234, 0.3);
+    }
+
+    .auth-submit:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(0, 255, 234, 0.6);
+    }
+
+    .close-auth {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: none;
+      border: none;
+      color: var(--neon-magenta);
+      font-size: 28px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .close-auth:hover {
+      color: var(--neon-cyan);
+      transform: scale(1.2);
+    }
+
+    .auth-message {
+      text-align: center;
+      font-size: 12px;
+      color: rgba(207, 239, 255, 0.8);
+      margin-top: 15px;
+    }
+
+    /* ========== FAN CLUB CHAT PAGE ========== */
+    .fan-club-header {
+      background: rgba(10, 10, 18, 0.8);
+      border-bottom: 2px solid var(--neon-cyan);
+      padding: 20px;
+      margin-bottom: 30px;
+      border-radius: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .fan-club-header h1 {
+      color: var(--neon-cyan);
+      text-shadow: 0 0 15px rgba(0, 255, 234, 0.7);
+      margin: 0;
+      font-size: 28px;
+    }
+
+    .user-info {
+      color: var(--neon-magenta);
+      font-size: 14px;
+    }
+
+    .logout-btn {
+      background: rgba(255, 0, 214, 0.8);
+      border: none;
+      color: #000;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 12px;
+      transition: all 0.2s ease;
+      margin-left: 15px;
+    }
+
+    .logout-btn:hover {
+      background: var(--neon-magenta);
+      transform: scale(1.05);
+    }
+
+    .chat-container {
+      display: flex;
+      flex-direction: column;
+      height: 500px;
+      background: rgba(5, 6, 11, 0.8);
+      border: 1px solid rgba(0, 255, 234, 0.4);
+      border-radius: 12px;
+      overflow: hidden;
+      margin: 20px 0;
+    }
+
+    .chat-messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .chat-message {
+      background: rgba(0, 255, 234, 0.08);
+      border-left: 3px solid var(--neon-cyan);
+      padding: 12px;
+      border-radius: 6px;
+      max-width: 70%;
+    }
+
+    .chat-message.own {
+      align-self: flex-end;
+      background: rgba(255, 0, 214, 0.08);
+      border-left-color: var(--neon-magenta);
+      max-width: 70%;
+    }
+
+    .message-user {
+      color: var(--neon-cyan);
+      font-size: 12px;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .chat-message.own .message-user {
+      color: var(--neon-magenta);
+    }
+
+    .message-text {
+      color: rgba(207, 239, 255, 0.9);
+      font-size: 14px;
+    }
+
+    .chat-input-area {
+      padding: 15px;
+      border-top: 1px solid rgba(0, 255, 234, 0.2);
+      display: flex;
+      gap: 10px;
+    }
+
+    .chat-input-area input {
+      flex: 1;
+      padding: 12px;
+      background: rgba(0, 0, 0, 0.7);
+      border: 1px solid rgba(0, 255, 234, 0.4);
+      color: var(--text);
+      border-radius: 6px;
+      font-family: "Courier New", monospace;
+    }
+
+    .chat-input-area button {
+      padding: 12px 20px;
+      background: linear-gradient(135deg, var(--neon-cyan), var(--neon-magenta));
+      border: none;
+      color: #000;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.2s ease;
+    }
+
+    .chat-input-area button:hover {
+      transform: scale(1.05);
+    }
+
     /* ========== AUDIO PLAYER ========== */
     .audio-player {
       position: fixed;
@@ -639,6 +937,95 @@
 
 <div class="grid"></div>
 
+<!-- ========== PROFILE BUTTON ========== -->
+<button class="profile-btn" id="profileBtn" onclick="toggleAuthModal()">👤 Account</button>
+
+<!-- ========== LOGIN/SIGNUP MODAL ========== -->
+<div class="auth-modal" id="authModal">
+  <div class="auth-container">
+    <button class="close-auth" onclick="closeAuthModal()">×</button>
+    
+    <h2>BOA Access Portal</h2>
+    
+    <div class="auth-tabs">
+      <button class="auth-tab active" onclick="switchAuthTab('login')">Sign In</button>
+      <button class="auth-tab" onclick="switchAuthTab('signup')">Create Account</button>
+    </div>
+
+    <!-- LOGIN FORM -->
+    <form class="auth-form active" id="loginForm" onsubmit="handleLogin(event)">
+      <div class="form-group">
+        <label for="loginEmail">Email or Username</label>
+        <input type="text" id="loginEmail" placeholder="Enter email or username" required>
+      </div>
+      <div class="form-group">
+        <label for="loginPassword">Password</label>
+        <input type="password" id="loginPassword" placeholder="Enter password" required>
+      </div>
+      <button type="submit" class="auth-submit">Sign In</button>
+      <p class="auth-message" id="loginMessage"></p>
+    </form>
+
+    <!-- SIGNUP FORM -->
+    <form class="auth-form" id="signupForm" onsubmit="handleSignup(event)">
+      <div class="form-group">
+        <label for="signupUsername">Username</label>
+        <input type="text" id="signupUsername" placeholder="Choose a username" required>
+      </div>
+      <div class="form-group">
+        <label for="signupEmail">Email</label>
+        <input type="email" id="signupEmail" placeholder="Enter your email" required>
+      </div>
+      <div class="form-group">
+        <label for="signupPassword">Password</label>
+        <input type="password" id="signupPassword" placeholder="Create a password" required>
+      </div>
+      <div class="form-group">
+        <label for="signupConfirm">Confirm Password</label>
+        <input type="password" id="signupConfirm" placeholder="Confirm password" required>
+      </div>
+      <button type="submit" class="auth-submit">Create Account</button>
+      <p class="auth-message" id="signupMessage"></p>
+    </form>
+  </div>
+</div>
+
+<!-- ========== FAN CLUB CHAT PAGE ========== -->
+<div id="fanClubPage" class="page-section">
+  <div class="container">
+    <div class="fan-club-header">
+      <div>
+        <h1>🎯 BOA Fan Club</h1>
+        <p style="color: rgba(207, 239, 255, 0.7); margin: 5px 0 0 0;">Exclusive Access - Members Only</p>
+      </div>
+      <div style="display: flex; align-items: center;">
+        <div class="user-info">
+          Welcome, <strong id="displayUsername">User</strong>!
+        </div>
+        <button class="logout-btn" onclick="handleLogout()">Logout</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>💬 Live Community Chat</h2>
+      <p style="color: rgba(207, 239, 255, 0.8); margin-bottom: 20px;">
+        Connect with other BOA fans, discuss theories, and chat with the authors!
+      </p>
+      
+      <div class="chat-container">
+        <div class="chat-messages" id="chatMessages">
+        </div>
+        <div class="chat-input-area">
+          <input type="text" id="chatInput" placeholder="Type your message..." />
+          <button onclick="sendChatMessage()">Send</button>
+        </div>
+      </div>
+    </div>
+
+    <button class="btn back-btn" onclick="showPage('mainPage')" style="margin-top: 30px;">← Back to Main</button>
+  </div>
+</div>
+
 <!-- ========== BACKGROUND MUSIC PLAYER ========== -->
 <audio id="backgroundMusic" loop>
   <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
@@ -848,6 +1235,255 @@
     }
   });
 
+  // ========== ACCOUNT MANAGEMENT ==========
+  let currentUser = null;
+
+  function loadUserSession() {
+    const savedUser = localStorage.getItem('boaCurrentUser');
+    if (savedUser) {
+      currentUser = JSON.parse(savedUser);
+      updateProfileButton();
+    }
+  }
+
+  function updateProfileButton() {
+    const profileBtn = document.getElementById('profileBtn');
+    if (currentUser) {
+      profileBtn.textContent = `👤 ${currentUser.username}`;
+      profileBtn.style.background = 'linear-gradient(135deg, var(--neon-magenta), var(--neon-cyan))';
+    }
+  }
+
+  function toggleAuthModal() {
+    if (currentUser) {
+      // User is logged in, show fan club
+      showPage('fanClubPage');
+    } else {
+      // User not logged in, show auth modal
+      document.getElementById('authModal').classList.add('active');
+    }
+  }
+
+  function closeAuthModal() {
+    document.getElementById('authModal').classList.remove('active');
+  }
+
+  function switchAuthTab(tab) {
+    // Update tab buttons
+    document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
+    event.target.classList.add('active');
+
+    // Update forms
+    document.querySelectorAll('.auth-form').forEach(f => f.classList.remove('active'));
+    
+    if (tab === 'login') {
+      document.getElementById('loginForm').classList.add('active');
+    } else {
+      document.getElementById('signupForm').classList.add('active');
+    }
+  }
+
+  function handleSignup(e) {
+    e.preventDefault();
+
+    const username = document.getElementById('signupUsername').value;
+    const email = document.getElementById('signupEmail').value;
+    const password = document.getElementById('signupPassword').value;
+    const confirm = document.getElementById('signupConfirm').value;
+    const messageEl = document.getElementById('signupMessage');
+
+    // Validation
+    if (password !== confirm) {
+      messageEl.textContent = 'Passwords do not match!';
+      messageEl.style.color = '#ff4444';
+      return;
+    }
+
+    if (username.length < 3) {
+      messageEl.textContent = 'Username must be at least 3 characters!';
+      messageEl.style.color = '#ff4444';
+      return;
+    }
+
+    // Check if user exists
+    const existingUsers = JSON.parse(localStorage.getItem('boaUsers') || '[]');
+    if (existingUsers.some(u => u.username === username || u.email === email)) {
+      messageEl.textContent = 'Username or email already exists!';
+      messageEl.style.color = '#ff4444';
+      return;
+    }
+
+    // Create new user
+    const newUser = {
+      username,
+      email,
+      password: btoa(password) // Simple encoding (not secure for real apps)
+    };
+
+    existingUsers.push(newUser);
+    localStorage.setItem('boaUsers', JSON.stringify(existingUsers));
+
+    // Auto login
+    currentUser = { username, email };
+    localStorage.setItem('boaCurrentUser', JSON.stringify(currentUser));
+
+    messageEl.textContent = 'Account created successfully! Welcome to BOA!';
+    messageEl.style.color = '#00ffea';
+
+    setTimeout(() => {
+      closeAuthModal();
+      updateProfileButton();
+      showPage('fanClubPage');
+    }, 1500);
+  }
+
+  function handleLogin(e) {
+    e.preventDefault();
+
+    const emailOrUsername = document.getElementById('loginEmail').value;
+    const password = document.getElementById('loginPassword').value;
+    const messageEl = document.getElementById('loginMessage');
+
+    const users = JSON.parse(localStorage.getItem('boaUsers') || '[]');
+    const user = users.find(u => 
+      (u.username === emailOrUsername || u.email === emailOrUsername) &&
+      btoa(password) === u.password
+    );
+
+    if (!user) {
+      messageEl.textContent = 'Invalid credentials!';
+      messageEl.style.color = '#ff4444';
+      return;
+    }
+
+    // Login successful
+    currentUser = { username: user.username, email: user.email };
+    localStorage.setItem('boaCurrentUser', JSON.stringify(currentUser));
+
+    messageEl.textContent = 'Login successful!';
+    messageEl.style.color = '#00ffea';
+
+    setTimeout(() => {
+      closeAuthModal();
+      updateProfileButton();
+      showPage('fanClubPage');
+    }, 1500);
+  }
+
+  function handleLogout() {
+    stopChatRefresh();
+    localStorage.removeItem('boaCurrentUser');
+    currentUser = null;
+    updateProfileButton();
+    showPage('mainPage');
+    document.getElementById('authModal').classList.remove('active');
+  }
+
+  // ========== FAN CLUB CHAT ==========
+  function loadChatMessages() {
+    const messages = JSON.parse(localStorage.getItem('boaChatMessages') || '[]');
+    return messages;
+  }
+
+  function saveChatMessages(messages) {
+    localStorage.setItem('boaChatMessages', JSON.stringify(messages));
+  }
+
+  function refreshChatDisplay() {
+    const messagesContainer = document.getElementById('chatMessages');
+    const messages = loadChatMessages();
+    
+    messagesContainer.innerHTML = '';
+    
+    // Add initial system message if no messages
+    if (messages.length === 0) {
+      messagesContainer.innerHTML = `
+        <div class="chat-message">
+          <div class="message-user">📢 BOA System</div>
+          <div class="message-text">Welcome to the BOA Fan Club! This is an exclusive space for fans to discuss the series, share theories, and connect with the community.</div>
+        </div>
+      `;
+      return;
+    }
+
+    // Display all messages
+    messages.forEach(msg => {
+      const messageEl = document.createElement('div');
+      messageEl.className = msg.isOwn ? 'chat-message own' : 'chat-message';
+      messageEl.innerHTML = `
+        <div class="message-user">${msg.username}</div>
+        <div class="message-text">${msg.text}</div>
+      `;
+      messagesContainer.appendChild(messageEl);
+    });
+
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+  }
+
+  function sendChatMessage() {
+    const input = document.getElementById('chatInput');
+    const message = input.value.trim();
+
+    if (!message || !currentUser) return;
+
+    // Add message to storage
+    const messages = loadChatMessages();
+    messages.push({
+      username: currentUser.username,
+      text: message,
+      timestamp: new Date().toISOString(),
+      isOwn: true
+    });
+    saveChatMessages(messages);
+
+    // Clear input
+    input.value = '';
+
+    // Refresh display
+    refreshChatDisplay();
+  }
+
+  // Poll for new messages every 1 second for multi-user chat
+  let chatRefreshInterval = null;
+
+  function startChatRefresh() {
+    if (chatRefreshInterval) clearInterval(chatRefreshInterval);
+    chatRefreshInterval = setInterval(() => {
+      const messagesContainer = document.getElementById('chatMessages');
+      if (messagesContainer && document.getElementById('fanClubPage').classList.contains('active')) {
+        refreshChatDisplay();
+      }
+    }, 1000);
+  }
+
+  function stopChatRefresh() {
+    if (chatRefreshInterval) {
+      clearInterval(chatRefreshInterval);
+      chatRefreshInterval = null;
+    }
+  }
+
+  // Allow sending messages with Enter key
+  document.addEventListener('DOMContentLoaded', function() {
+    const chatInput = document.getElementById('chatInput');
+    if (chatInput) {
+      chatInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+          sendChatMessage();
+        }
+      });
+    }
+    
+    // Update fan club display
+    if (currentUser) {
+      document.getElementById('displayUsername').textContent = currentUser.username;
+    }
+
+    loadUserSession();
+    populateBooksGrid();
+    populateReleaseDates();
+  });
+
   // ========== PAGE NAVIGATION ==========
   function showPage(pageId) {
     // Hide all pages
@@ -857,6 +1493,14 @@
     
     // Show selected page
     document.getElementById(pageId).classList.add('active');
+    
+    // Start chat refresh if going to fan club
+    if (pageId === 'fanClubPage') {
+      refreshChatDisplay();
+      startChatRefresh();
+    } else {
+      stopChatRefresh();
+    }
     
     // Scroll to top
     window.scrollTo(0, 0);
