@@ -1391,56 +1391,77 @@
 
   function refreshChatDisplay() {
     const messagesContainer = document.getElementById('chatMessages');
+    if (!messagesContainer) return;
+    
     const messages = loadChatMessages();
     
+    // Clear container
     messagesContainer.innerHTML = '';
     
     // Add initial system message if no messages
     if (messages.length === 0) {
-      messagesContainer.innerHTML = `
-        <div class="chat-message">
-          <div class="message-user">📢 BOA System</div>
-          <div class="message-text">Welcome to the BOA Fan Club! This is an exclusive space for fans to discuss the series, share theories, and connect with the community.</div>
-        </div>
+      const systemMsg = document.createElement('div');
+      systemMsg.className = 'chat-message';
+      systemMsg.innerHTML = `
+        <div class="message-user">📢 BOA System</div>
+        <div class="message-text">Welcome to the BOA Fan Club! This is an exclusive space for fans to discuss the series, share theories, and connect with the community.</div>
       `;
+      messagesContainer.appendChild(systemMsg);
       return;
     }
 
     // Display all messages
     messages.forEach(msg => {
-      // Determine if this message belongs to the current user
-      const isOwnMessage = currentUser && msg.username === currentUser.username;
       const messageEl = document.createElement('div');
+      
+      // Check if message belongs to current user
+      const isOwnMessage = currentUser && msg.username === currentUser.username;
       messageEl.className = isOwnMessage ? 'chat-message own' : 'chat-message';
+      
+      const userDisplay = isOwnMessage ? `👤 ${msg.username} (You)` : msg.username;
+      
       messageEl.innerHTML = `
-        <div class="message-user">${msg.username}</div>
+        <div class="message-user">${userDisplay}</div>
         <div class="message-text">${msg.text}</div>
       `;
       messagesContainer.appendChild(messageEl);
     });
 
-    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    // Scroll to bottom
+    setTimeout(() => {
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }, 0);
   }
 
   function sendChatMessage() {
     const input = document.getElementById('chatInput');
     const message = input.value.trim();
 
-    if (!message || !currentUser) return;
+    if (!message) {
+      console.log('Empty message');
+      return;
+    }
+    
+    if (!currentUser) {
+      console.log('No current user');
+      alert('You must be logged in to send messages');
+      return;
+    }
 
     // Add message to storage
     const messages = loadChatMessages();
-    messages.push({
+    const newMessage = {
       username: currentUser.username,
       text: message,
       timestamp: new Date().toISOString()
-    });
+    };
+    messages.push(newMessage);
     saveChatMessages(messages);
 
     // Clear input
     input.value = '';
 
-    // Refresh display
+    // Refresh display immediately
     refreshChatDisplay();
   }
 
@@ -1497,6 +1518,15 @@
     
     // Start chat refresh if going to fan club
     if (pageId === 'fanClubPage') {
+      // Update username display
+      if (currentUser) {
+        document.getElementById('displayUsername').textContent = currentUser.username;
+      }
+      // Clear old messages and refresh
+      const messagesContainer = document.getElementById('chatMessages');
+      if (messagesContainer) {
+        messagesContainer.innerHTML = '';
+      }
       refreshChatDisplay();
       startChatRefresh();
     } else {
@@ -1724,3 +1754,4 @@
 
 </body>
 </html>
+
