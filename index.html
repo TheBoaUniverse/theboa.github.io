@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>BOA — The Bureau of Assassination</title>
   <style>
     /* ========== CYBER DARK NEON THEME ========== */
@@ -16,9 +16,7 @@
       --glow-magenta: 0 0 30px rgba(255, 0, 214, 0.7);
     }
 
-    * { 
-      box-sizing: border-box; 
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -27,6 +25,11 @@
       color: var(--text);
       overflow-x: hidden;
       line-height: 1.6;
+    }
+
+    /* Respect reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      .grid, .landing h1, .landing .tagline, .card, .card::before { animation: none !important; transition: none !important; }
     }
 
     /* Background grid animation */
@@ -59,7 +62,7 @@
 
     /* ========== LANDING SECTION ========== */
     .landing {
-      height: 100vh;
+      min-height: 60vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -77,10 +80,7 @@
       pointer-events: none;
     }
 
-    .landing-content {
-      position: relative;
-      z-index: 2;
-    }
+    .landing-content { position: relative; z-index: 2; }
 
     .landing h1 {
       font-size: 72px;
@@ -88,16 +88,10 @@
       letter-spacing: 4px;
       margin: 0;
       line-height: 1.2;
-      text-shadow: 
+      text-shadow:
         0 0 30px rgba(0, 255, 234, 0.8),
         0 0 60px rgba(255, 0, 214, 0.6);
-      animation: glitchText 3s ease-in-out infinite;
       color: var(--neon-cyan);
-    }
-
-    @keyframes glitchText {
-      0%, 100% { text-shadow: 0 0 30px rgba(0, 255, 234, 0.8), 0 0 60px rgba(255, 0, 214, 0.6); }
-      50% { text-shadow: 0 0 50px rgba(255, 0, 214, 0.9), 0 0 80px rgba(0, 255, 234, 0.7); }
     }
 
     .landing .tagline {
@@ -105,12 +99,6 @@
       color: rgba(207, 239, 255, 0.9);
       margin-top: 20px;
       letter-spacing: 1px;
-      animation: pulse-text 2.5s ease-in-out infinite;
-    }
-
-    @keyframes pulse-text {
-      0%, 100% { opacity: 0.8; }
-      50% { opacity: 1; }
     }
 
     /* ========== CARDS ========== */
@@ -120,10 +108,9 @@
       border-radius: 16px;
       padding: 40px;
       margin: 40px 0;
-      box-shadow: 
+      box-shadow:
         0 0 20px rgba(0, 255, 234, 0.3),
         inset 0 0 20px rgba(0, 255, 234, 0.05);
-      animation: glowPulse 5s ease-in-out infinite;
       backdrop-filter: blur(5px);
       position: relative;
       overflow: hidden;
@@ -137,23 +124,7 @@
       pointer-events: none;
     }
 
-    .card > * {
-      position: relative;
-      z-index: 1;
-    }
-
-    @keyframes glowPulse {
-      0%, 100% { 
-        box-shadow: 
-          0 0 20px rgba(0, 255, 234, 0.3),
-          inset 0 0 20px rgba(0, 255, 234, 0.05);
-      }
-      50% { 
-        box-shadow: 
-          0 0 40px rgba(255, 0, 214, 0.4),
-          inset 0 0 30px rgba(255, 0, 214, 0.08);
-      }
-    }
+    .card > * { position: relative; z-index: 1; }
 
     .card h2 {
       font-size: 28px;
@@ -164,11 +135,7 @@
       letter-spacing: 2px;
     }
 
-    .card p {
-      color: rgba(207, 239, 255, 0.85);
-      font-size: 16px;
-      line-height: 1.8;
-    }
+    .card p { color: rgba(207, 239, 255, 0.85); font-size: 16px; line-height: 1.8; }
 
     /* ========== AUTHOR CARDS ========== */
     .authors-grid {
@@ -186,60 +153,26 @@
       box-shadow: 0 0 25px rgba(255, 0, 214, 0.3);
       transition: all 0.3s ease;
       backdrop-filter: blur(5px);
+      cursor: pointer;
     }
 
-    .author-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 0 40px rgba(255, 0, 214, 0.5), inset 0 0 20px rgba(255, 0, 214, 0.1);
-      border-color: rgba(255, 0, 214, 0.8);
-    }
+    .author-card:hover { transform: translateY(-5px); }
 
-    .author-card h3 {
-      font-size: 24px;
-      color: var(--neon-magenta);
-      text-shadow: 0 0 15px rgba(255, 0, 214, 0.7);
-      margin: 0 0 10px 0;
-      letter-spacing: 1px;
-    }
+    .author-card h3 { font-size: 24px; color: var(--neon-magenta); margin: 0 0 10px 0; }
 
-    .author-role {
-      font-size: 12px;
-      color: var(--neon-cyan);
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      margin-bottom: 15px;
-      opacity: 0.9;
-    }
+    .author-role { font-size: 12px; color: var(--neon-cyan); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px; opacity: 0.9; }
 
-    .author-aura {
-      font-size: 14px;
-      color: rgba(207, 239, 255, 0.75);
-      font-style: italic;
-      line-height: 1.7;
-    }
+    .author-aura { font-size: 14px; color: rgba(207, 239, 255, 0.75); font-style: italic; line-height: 1.7; }
 
     /* ========== BOOK SUMMARY ========== */
-    .summary-text {
-      font-size: 18px;
-      line-height: 1.9;
-      color: rgba(207, 239, 255, 0.9);
-    }
+    .summary-text { font-size: 18px; line-height: 1.9; color: rgba(207, 239, 255, 0.9); }
 
-    .summary-text .highlight {
-      color: var(--neon-cyan);
-      text-shadow: 0 0 10px rgba(0, 255, 234, 0.6);
-      font-weight: bold;
-    }
+    .summary-text .highlight { color: var(--neon-cyan); font-weight: bold; }
 
     /* ========== ENCRYPTION TOOL ========== */
-    .encryption-controls {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 15px;
-      margin-top: 20px;
-    }
+    .encryption-controls { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
 
-    input {
+    input, textarea {
       width: 100%;
       padding: 15px;
       border-radius: 8px;
@@ -251,18 +184,9 @@
       transition: all 0.2s ease;
     }
 
-    input:focus {
-      outline: none;
-      border-color: var(--neon-cyan);
-      box-shadow: 0 0 15px rgba(0, 255, 234, 0.5);
-      background: rgba(0, 0, 0, 0.9);
-    }
+    input:focus { outline: none; border-color: var(--neon-cyan); box-shadow: 0 0 15px rgba(0, 255, 234, 0.5); background: rgba(0, 0, 0, 0.9); }
 
-    .button-group {
-      display: flex;
-      gap: 10px;
-      margin-top: 15px;
-    }
+    .button-group { display: flex; gap: 10px; margin-top: 15px; }
 
     .btn {
       flex: 1;
@@ -281,14 +205,7 @@
       box-shadow: 0 0 15px rgba(0, 255, 234, 0.4);
     }
 
-    .btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 25px rgba(255, 0, 214, 0.6);
-    }
-
-    .btn:active {
-      transform: scale(0.98);
-    }
+    .btn:hover { transform: scale(1.05); box-shadow: 0 0 25px rgba(255, 0, 214, 0.6); }
 
     #encOutput {
       margin-top: 20px;
@@ -297,17 +214,10 @@
       border: 1px solid rgba(0, 255, 234, 0.4);
       border-radius: 8px;
       color: var(--neon-cyan);
-      text-shadow: 0 0 10px rgba(0, 255, 234, 0.6);
       font-weight: bold;
       min-height: 50px;
       display: flex;
       align-items: center;
-      animation: fadeIn 0.3s ease;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
     }
 
     /* ========== AUDIO VISUALIZER ========== */
@@ -320,38 +230,13 @@
       backdrop-filter: blur(5px);
     }
 
-    canvas {
-      width: 100%;
-      height: 250px;
-      display: block;
-      border-radius: 8px;
-      background: radial-gradient(circle at center, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.95));
-      margin-top: 15px;
-    }
+    canvas { width: 100%; height: 250px; display: block; border-radius: 8px; background: radial-gradient(circle at center, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.95)); margin-top: 15px; }
 
     /* ========== FOOTER ========== */
-    .footer {
-      margin-top: 60px;
-      padding: 30px 0;
-      text-align: center;
-      font-size: 14px;
-      color: rgba(207, 239, 255, 0.6);
-      border-top: 1px solid rgba(0, 255, 234, 0.2);
-    }
+    .footer { margin-top: 60px; padding: 30px 0; text-align: center; font-size: 14px; color: rgba(207, 239, 255, 0.6); border-top: 1px solid rgba(0, 255, 234, 0.2); }
 
-    .footer-link {
-      color: var(--neon-cyan);
-      text-decoration: none;
-      text-shadow: 0 0 10px rgba(0, 255, 234, 0.5);
-      transition: all 0.2s ease;
-    }
+    .footer-link { color: var(--neon-cyan); text-decoration: none; transition: all 0.2s ease; }
 
-    .footer-link:hover {
-      color: var(--neon-magenta);
-      text-shadow: 0 0 15px rgba(255, 0, 214, 0.6);
-    }
-
-    /* ========== PROFILE BUTTON ========== */
     .profile-btn {
       position: fixed;
       top: 30px;
@@ -369,587 +254,99 @@
       box-shadow: 0 0 15px rgba(255, 0, 214, 0.4);
     }
 
-    .profile-btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 25px rgba(255, 0, 214, 0.6);
-    }
+    .profile-btn:hover { transform: scale(1.05); }
 
     /* ========== LOGIN/SIGNUP MODAL ========== */
-    .auth-modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(5, 6, 11, 0.95);
-      z-index: 2000;
-      justify-content: center;
-      align-items: center;
-      backdrop-filter: blur(10px);
-    }
-
-    .auth-modal.active {
-      display: flex;
-    }
-
-    .auth-container {
-      background: rgba(10, 10, 18, 0.9);
-      border: 2px solid var(--neon-cyan);
-      border-radius: 16px;
-      padding: 40px;
-      max-width: 400px;
-      width: 90%;
-      box-shadow: 0 0 50px rgba(0, 255, 234, 0.3);
-      position: relative;
-    }
-
-    .auth-container h2 {
-      font-size: 28px;
-      color: var(--neon-cyan);
-      text-shadow: 0 0 15px rgba(0, 255, 234, 0.7);
-      margin-top: 0;
-      margin-bottom: 30px;
-      text-align: center;
-    }
-
-    .auth-tabs {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 30px;
-    }
-
-    .auth-tab {
-      flex: 1;
-      padding: 10px;
-      border: none;
-      background: rgba(0, 255, 234, 0.1);
-      color: var(--neon-cyan);
-      cursor: pointer;
-      border-radius: 8px;
-      font-weight: bold;
-      transition: all 0.3s ease;
-      border: 1px solid rgba(0, 255, 234, 0.4);
-    }
-
-    .auth-tab.active {
-      background: var(--neon-cyan);
-      color: #000;
-      box-shadow: 0 0 15px rgba(0, 255, 234, 0.6);
-    }
-
-    .auth-form {
-      display: none;
-    }
-
-    .auth-form.active {
-      display: block;
-    }
-
-    .form-group {
-      margin-bottom: 20px;
-    }
-
-    .form-group label {
-      display: block;
-      color: var(--neon-cyan);
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 8px;
-      font-weight: bold;
-    }
-
-    .form-group input {
-      width: 100%;
-      padding: 12px;
-      border-radius: 8px;
-      border: 1px solid rgba(0, 255, 234, 0.5);
-      background: rgba(0, 0, 0, 0.7);
-      color: var(--text);
-      font-family: "Courier New", monospace;
-      font-size: 14px;
-      transition: all 0.2s ease;
-    }
-
-    .form-group input:focus {
-      outline: none;
-      border-color: var(--neon-cyan);
-      box-shadow: 0 0 15px rgba(0, 255, 234, 0.5);
-      background: rgba(0, 0, 0, 0.9);
-    }
-
-    .auth-submit {
-      width: 100%;
-      padding: 12px;
-      background: linear-gradient(135deg, var(--neon-cyan), var(--neon-magenta));
-      border: none;
-      color: #000;
-      font-weight: bold;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      font-size: 14px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      box-shadow: 0 0 15px rgba(0, 255, 234, 0.3);
-    }
-
-    .auth-submit:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 25px rgba(0, 255, 234, 0.6);
-    }
-
-    .close-auth {
-      position: absolute;
-      top: 15px;
-      right: 15px;
-      background: none;
-      border: none;
-      color: var(--neon-magenta);
-      font-size: 28px;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-
-    .close-auth:hover {
-      color: var(--neon-cyan);
-      transform: scale(1.2);
-    }
-
-    .auth-message {
-      text-align: center;
-      font-size: 12px;
-      color: rgba(207, 239, 255, 0.8);
-      margin-top: 15px;
-    }
+    .auth-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(5, 6, 11, 0.95); z-index: 2000; justify-content: center; align-items: center; backdrop-filter: blur(10px); }
+    .auth-modal.active { display: flex; }
+    .auth-container { background: rgba(10, 10, 18, 0.9); border: 2px solid var(--neon-cyan); border-radius: 16px; padding: 40px; max-width: 400px; width: 90%; box-shadow: 0 0 50px rgba(0, 255, 234, 0.3); position: relative; }
+    .auth-container h2 { font-size: 28px; color: var(--neon-cyan); margin-top: 0; margin-bottom: 30px; text-align: center; }
+    .auth-tabs { display: flex; gap: 10px; margin-bottom: 30px; }
+    .auth-tab { flex: 1; padding: 10px; border: none; background: rgba(0, 255, 234, 0.1); color: var(--neon-cyan); cursor: pointer; border-radius: 8px; font-weight: bold; transition: all 0.3s ease; border: 1px solid rgba(0, 255, 234, 0.4); }
+    .auth-tab.active { background: var(--neon-cyan); color: #000; box-shadow: 0 0 15px rgba(0, 255, 234, 0.6); }
+    .auth-form { display: none; }
+    .auth-form.active { display: block; }
+    .form-group { margin-bottom: 20px; }
+    .form-group label { display: block; color: var(--neon-cyan); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; font-weight: bold; }
+    .form-group input { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid rgba(0, 255, 234, 0.5); background: rgba(0, 0, 0, 0.7); color: var(--text); font-family: "Courier New", monospace; font-size: 14px; transition: all 0.2s ease; }
+    .auth-submit { width: 100%; padding: 12px; background: linear-gradient(135deg, var(--neon-cyan), var(--neon-magenta)); border: none; color: #000; font-weight: bold; border-radius: 8px; cursor: pointer; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 0 15px rgba(0, 255, 234, 0.3); }
+    .close-auth { position: absolute; top: 15px; right: 15px; background: none; border: none; color: var(--neon-magenta); font-size: 28px; cursor: pointer; transition: all 0.2s ease; }
+    .auth-message { text-align: center; font-size: 12px; color: rgba(207, 239, 255, 0.8); margin-top: 15px; }
 
     /* ========== FAN CLUB CHAT PAGE ========== */
-    .fan-club-header {
-      background: rgba(10, 10, 18, 0.8);
-      border-bottom: 2px solid var(--neon-cyan);
-      padding: 20px;
-      margin-bottom: 30px;
-      border-radius: 12px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .fan-club-header h1 {
-      color: var(--neon-cyan);
-      text-shadow: 0 0 15px rgba(0, 255, 234, 0.7);
-      margin: 0;
-      font-size: 28px;
-    }
-
-    .user-info {
-      color: var(--neon-magenta);
-      font-size: 14px;
-    }
-
-    .logout-btn {
-      background: rgba(255, 0, 214, 0.8);
-      border: none;
-      color: #000;
-      padding: 8px 16px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: bold;
-      font-size: 12px;
-      transition: all 0.2s ease;
-      margin-left: 15px;
-    }
-
-    .logout-btn:hover {
-      background: var(--neon-magenta);
-      transform: scale(1.05);
-    }
-
-    .chat-container {
-      display: flex;
-      flex-direction: column;
-      height: 500px;
-      background: rgba(5, 6, 11, 0.8);
-      border: 1px solid rgba(0, 255, 234, 0.4);
-      border-radius: 12px;
-      overflow: hidden;
-      margin: 20px 0;
-    }
-
-    .chat-messages {
-      flex: 1;
-      overflow-y: auto;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-
-    .chat-message {
-      background: rgba(0, 255, 234, 0.08);
-      border-left: 3px solid var(--neon-cyan);
-      padding: 12px;
-      border-radius: 6px;
-      max-width: 70%;
-    }
-
-    .chat-message.own {
-      align-self: flex-end;
-      background: rgba(255, 0, 214, 0.08);
-      border-left-color: var(--neon-magenta);
-      max-width: 70%;
-    }
-
-    .message-user {
-      color: var(--neon-cyan);
-      font-size: 12px;
-      font-weight: bold;
-      margin-bottom: 5px;
-    }
-
-    .chat-message.own .message-user {
-      color: var(--neon-magenta);
-    }
-
-    .message-text {
-      color: rgba(207, 239, 255, 0.9);
-      font-size: 14px;
-    }
-
-    .chat-input-area {
-      padding: 15px;
-      border-top: 1px solid rgba(0, 255, 234, 0.2);
-      display: flex;
-      gap: 10px;
-    }
-
-    .chat-input-area input {
-      flex: 1;
-      padding: 12px;
-      background: rgba(0, 0, 0, 0.7);
-      border: 1px solid rgba(0, 255, 234, 0.4);
-      color: var(--text);
-      border-radius: 6px;
-      font-family: "Courier New", monospace;
-    }
-
-    .chat-input-area button {
-      padding: 12px 20px;
-      background: linear-gradient(135deg, var(--neon-cyan), var(--neon-magenta));
-      border: none;
-      color: #000;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: bold;
-      transition: all 0.2s ease;
-    }
-
-    .chat-input-area button:hover {
-      transform: scale(1.05);
-    }
+    .fan-club-header { background: rgba(10, 10, 18, 0.8); border-bottom: 2px solid var(--neon-cyan); padding: 20px; margin-bottom: 30px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; }
+    .fan-club-header h1 { color: var(--neon-cyan); margin: 0; font-size: 28px; }
+    .user-info { color: var(--neon-magenta); font-size: 14px; }
+    .logout-btn { background: rgba(255, 0, 214, 0.8); border: none; color: #000; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 12px; transition: all 0.2s ease; margin-left: 15px; }
+    .chat-container { display: flex; flex-direction: column; height: 500px; background: rgba(5, 6, 11, 0.8); border: 1px solid rgba(0, 255, 234, 0.4); border-radius: 12px; overflow: hidden; margin: 20px 0; }
+    .chat-messages { flex: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 15px; }
+    .chat-message { background: rgba(0, 255, 234, 0.08); border-left: 3px solid var(--neon-cyan); padding: 12px; border-radius: 6px; max-width: 70%; }
+    .chat-message.own { align-self: flex-end; background: rgba(255, 0, 214, 0.08); border-left-color: var(--neon-magenta); max-width: 70%; }
+    .message-user { color: var(--neon-cyan); font-size: 12px; font-weight: bold; margin-bottom: 5px; }
+    .chat-message.own .message-user { color: var(--neon-magenta); }
+    .message-text { color: rgba(207, 239, 255, 0.9); font-size: 14px; word-break: break-word; white-space: pre-wrap; }
+    .chat-input-area { padding: 15px; border-top: 1px solid rgba(0, 255, 234, 0.2); display: flex; gap: 10px; }
+    .chat-input-area input { flex: 1; padding: 12px; background: rgba(0, 0, 0, 0.7); border: 1px solid rgba(0, 255, 234, 0.4); color: var(--text); border-radius: 6px; font-family: "Courier New", monospace; }
+    .chat-input-area button { padding: 12px 20px; background: linear-gradient(135deg, var(--neon-cyan), var(--neon-magenta)); border: none; color: #000; border-radius: 6px; cursor: pointer; font-weight: bold; transition: all 0.2s ease; }
 
     /* ========== AUDIO PLAYER ========== */
-    .audio-player {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      background: rgba(10, 10, 18, 0.95);
-      border: 1px solid rgba(0, 255, 234, 0.6);
-      border-radius: 12px;
-      padding: 15px 20px;
-      box-shadow: 0 0 30px rgba(0, 255, 234, 0.4);
-      z-index: 1000;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      backdrop-filter: blur(10px);
-    }
-
-    .audio-toggle-btn {
-      background: linear-gradient(135deg, var(--neon-cyan), var(--neon-magenta));
-      border: none;
-      color: #000;
-      width: 40px;
-      height: 40px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 18px;
-      transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-    }
-
-    .audio-toggle-btn:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 20px rgba(0, 255, 234, 0.6);
-    }
-
-    .audio-status {
-      color: var(--neon-cyan);
-      font-size: 12px;
-      text-shadow: 0 0 8px rgba(0, 255, 234, 0.6);
-      font-weight: bold;
-      min-width: 60px;
-    }
-
-    audio {
-      display: none;
-    }
-
-    @media (max-width: 768px) {
-      .audio-player {
-        bottom: 15px;
-        right: 15px;
-        padding: 10px 15px;
-      }
-
-      .audio-toggle-btn {
-        width: 35px;
-        height: 35px;
-        font-size: 16px;
-      }
-
-      .audio-status {
-        min-width: 50px;
-      }
-    }
+    .audio-player { position: fixed; bottom: 30px; right: 30px; background: rgba(10, 10, 18, 0.95); border: 1px solid rgba(0, 255, 234, 0.6); border-radius: 12px; padding: 15px 20px; box-shadow: 0 0 30px rgba(0, 255, 234, 0.4); z-index: 1000; display: flex; align-items: center; gap: 12px; backdrop-filter: blur(10px); }
+    .audio-toggle-btn { background: linear-gradient(135deg, var(--neon-cyan), var(--neon-magenta)); border: none; color: #000; width: 40px; height: 40px; border-radius: 8px; cursor: pointer; font-size: 18px; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; font-weight: bold; }
+    .audio-status { color: var(--neon-cyan); font-size: 12px; font-weight: bold; min-width: 60px; }
 
     /* ========== PAGE SECTIONS ========== */
-    .page-section {
-      display: none;
-    }
+    .page-section { display: none; }
+    .page-section.active { display: block; }
+    .back-btn { background: rgba(255, 0, 214, 0.8); margin-bottom: 30px; }
 
-    .page-section.active {
-      display: block;
-    }
+    /* ========== EXTRA LAYOUT ========== */
+    .books-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 20px; }
+    .book-card { background: rgba(0, 255, 234, 0.08); border: 1px solid rgba(0, 255, 234, 0.5); border-radius: 12px; padding: 30px; text-align: center; transition: all 0.3s ease; }
+    .book-card:hover { transform: translateY(-5px); box-shadow: 0 0 30px rgba(0, 255, 234, 0.5); border-color: var(--neon-cyan); }
+    .book-card h3 { font-size: 20px; color: var(--neon-cyan); margin: 0 0 15px 0; }
+    .book-status { margin-top: 15px; padding: 10px; border-radius: 8px; font-weight: bold; font-size: 12px; }
+    .book-status.available { background: rgba(0, 255, 234, 0.2); color: var(--neon-cyan); }
+    .book-status.unavailable { background: rgba(255, 0, 214, 0.2); color: var(--neon-magenta); }
 
-    .back-btn {
-      background: rgba(255, 0, 214, 0.8);
-      margin-bottom: 30px;
-    }
+    .release-dates-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 30px; }
+    .release-card { background: rgba(5, 6, 11, 0.8); border: 1px solid rgba(0, 255, 234, 0.4); border-radius: 12px; padding: 25px; text-align: center; transition: all 0.3s ease; }
+    .release-card:hover { box-shadow: 0 0 35px rgba(0, 255, 234, 0.4); transform: scale(1.03); }
+    .release-card h3 { font-size: 18px; color: var(--neon-cyan); margin: 0 0 15px 0; }
+    .release-date { font-size: 20px; color: var(--neon-magenta); font-weight: bold; }
+    .release-status { font-size: 12px; color: rgba(207, 239, 255, 0.6); margin-top: 10px; font-style: italic; }
 
-    .back-btn:hover {
-      background: var(--neon-magenta);
-    }
+    .nav-buttons { display: flex; gap: 10px; justify-content: center; margin: 20px 0; flex-wrap: wrap; }
+    .nav-btn { background: linear-gradient(135deg, var(--neon-cyan), var(--neon-magenta)); padding: 12px 20px; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; border-radius: 8px; border: none; color: #000; font-weight: bold; cursor: pointer; transition: all 0.2s ease; box-shadow: 0 0 15px rgba(0, 255, 234, 0.3); }
 
-    /* ========== AUTHOR DETAIL PAGE ========== */
-    .author-detail {
-      background: rgba(5, 6, 11, 0.85);
-      border: 2px solid var(--neon-magenta);
-      border-radius: 16px;
-      padding: 50px;
-      margin: 40px 0;
-      box-shadow: 0 0 40px rgba(255, 0, 214, 0.4);
-      text-align: center;
-    }
-
-    .author-detail h2 {
-      font-size: 48px;
-      color: var(--neon-magenta);
-      text-shadow: 0 0 20px rgba(255, 0, 214, 0.8);
-      margin-bottom: 20px;
-    }
-
-    .author-detail .detail-content {
-      font-size: 18px;
-      color: rgba(207, 239, 255, 0.9);
-      line-height: 2;
-      text-align: left;
-      background: rgba(0, 0, 0, 0.5);
-      padding: 30px;
-      border-radius: 12px;
-      border: 1px solid rgba(255, 0, 214, 0.3);
-    }
-
-    .author-detail .detail-content strong {
-      color: var(--neon-cyan);
-      text-shadow: 0 0 10px rgba(0, 255, 234, 0.6);
-    }
-
-    /* ========== BOOKS PAGE ========== */
-    .books-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 25px;
-      margin-top: 20px;
-    }
-
-    .book-card {
-      background: rgba(0, 255, 234, 0.08);
-      border: 1px solid rgba(0, 255, 234, 0.5);
-      border-radius: 12px;
-      padding: 30px;
-      text-align: center;
-      transition: all 0.3s ease;
-    }
-
-    .book-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 0 30px rgba(0, 255, 234, 0.5);
-      border-color: var(--neon-cyan);
-    }
-
-    .book-card h3 {
-      font-size: 20px;
-      color: var(--neon-cyan);
-      text-shadow: 0 0 15px rgba(0, 255, 234, 0.6);
-      margin: 0 0 15px 0;
-    }
-
-    .book-card p {
-      color: rgba(207, 239, 255, 0.8);
-      font-size: 14px;
-      line-height: 1.7;
-    }
-
-    .book-status {
-      margin-top: 15px;
-      padding: 10px;
-      border-radius: 8px;
-      font-weight: bold;
-      font-size: 12px;
-    }
-
-    .book-status.available {
-      background: rgba(0, 255, 234, 0.2);
-      color: var(--neon-cyan);
-    }
-
-    .book-status.unavailable {
-      background: rgba(255, 0, 214, 0.2);
-      color: var(--neon-magenta);
-    }
-
-    /* ========== RELEASE DATES PAGE ========== */
-    .release-dates-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      margin-top: 30px;
-    }
-
-    .release-card {
-      background: rgba(5, 6, 11, 0.8);
-      border: 1px solid rgba(0, 255, 234, 0.4);
-      border-radius: 12px;
-      padding: 25px;
-      text-align: center;
-      box-shadow: 0 0 20px rgba(0, 255, 234, 0.2);
-      transition: all 0.3s ease;
-    }
-
-    .release-card:hover {
-      box-shadow: 0 0 35px rgba(0, 255, 234, 0.4);
-      transform: scale(1.05);
-    }
-
-    .release-card h3 {
-      font-size: 18px;
-      color: var(--neon-cyan);
-      text-shadow: 0 0 12px rgba(0, 255, 234, 0.6);
-      margin: 0 0 15px 0;
-    }
-
-    .release-date {
-      font-size: 20px;
-      color: var(--neon-magenta);
-      text-shadow: 0 0 15px rgba(255, 0, 214, 0.6);
-      font-weight: bold;
-    }
-
-    .release-status {
-      font-size: 12px;
-      color: rgba(207, 239, 255, 0.6);
-      margin-top: 10px;
-      font-style: italic;
-    }
-
-    /* ========== NAV BUTTONS ========== */
-    .nav-buttons {
-      display: flex;
-      gap: 10px;
-      justify-content: center;
-      margin: 20px 0;
-      flex-wrap: wrap;
-    }
-
-    .nav-btn {
-      background: linear-gradient(135deg, var(--neon-cyan), var(--neon-magenta));
-      padding: 12px 20px;
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      border-radius: 8px;
-      border: none;
-      color: #000;
-      font-weight: bold;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      box-shadow: 0 0 15px rgba(0, 255, 234, 0.3);
-    }
-
-    .nav-btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 25px rgba(255, 0, 214, 0.5);
-    }
-
-    /* ========== RESPONSIVE ========== */
     @media (max-width: 768px) {
-      .landing h1 {
-        font-size: 48px;
-      }
-
-      .landing .tagline {
-        font-size: 18px;
-      }
-
-      .card {
-        padding: 25px;
-        margin: 30px 0;
-      }
-
-      .authors-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .encryption-controls {
-        grid-template-columns: 1fr;
-      }
-
-      .summary-text {
-        font-size: 16px;
-      }
-
-      .author-detail {
-        padding: 25px;
-      }
-
-      .author-detail h2 {
-        font-size: 32px;
-      }
+      .landing h1 { font-size: 48px; }
+      .landing .tagline { font-size: 18px; }
+      .card { padding: 25px; margin: 30px 0; }
+      .authors-grid { grid-template-columns: 1fr; }
+      .encryption-controls { grid-template-columns: 1fr; }
+      .summary-text { font-size: 16px; }
+      .author-detail { padding: 25px; }
+      .author-detail h2 { font-size: 32px; }
     }
   </style>
 </head>
 <body>
 
-<div class="grid"></div>
+<div class="grid" aria-hidden="true"></div>
 
 <!-- ========== PROFILE BUTTON ========== -->
 <button class="profile-btn" id="profileBtn" onclick="toggleAuthModal()">👤 Account</button>
 
 <!-- ========== LOGIN/SIGNUP MODAL ========== -->
-<div class="auth-modal" id="authModal">
-  <div class="auth-container">
-    <button class="close-auth" onclick="closeAuthModal()">×</button>
-    
-    <h2>BOA Access Portal</h2>
-    
-    <div class="auth-tabs">
-      <button class="auth-tab active" onclick="switchAuthTab('login')">Sign In</button>
-      <button class="auth-tab" onclick="switchAuthTab('signup')">Create Account</button>
+<div class="auth-modal" id="authModal" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+  <div class="auth-container" role="document">
+    <button class="close-auth" onclick="closeAuthModal()" aria-label="Close authentication dialog">×</button>
+
+    <h2 id="authTitle">BOA Access Portal</h2>
+
+    <div class="auth-tabs" role="tablist">
+      <button class="auth-tab active" data-tab="login" onclick="switchAuthTab('login')">Sign In</button>
+      <button class="auth-tab" data-tab="signup" onclick="switchAuthTab('signup')">Create Account</button>
     </div>
 
     <!-- LOGIN FORM -->
@@ -963,7 +360,7 @@
         <input type="password" id="loginPassword" placeholder="Enter password" required>
       </div>
       <button type="submit" class="auth-submit">Sign In</button>
-      <p class="auth-message" id="loginMessage"></p>
+      <p class="auth-message" id="loginMessage" aria-live="polite"></p>
     </form>
 
     <!-- SIGNUP FORM -->
@@ -985,13 +382,13 @@
         <input type="password" id="signupConfirm" placeholder="Confirm password" required>
       </div>
       <button type="submit" class="auth-submit">Create Account</button>
-      <p class="auth-message" id="signupMessage"></p>
+      <p class="auth-message" id="signupMessage" aria-live="polite"></p>
     </form>
   </div>
 </div>
 
 <!-- ========== FAN CLUB CHAT PAGE ========== -->
-<div id="fanClubPage" class="page-section">
+<div id="fanClubPage" class="page-section" aria-hidden="true">
   <div class="container">
     <div class="fan-club-header">
       <div>
@@ -1011,13 +408,12 @@
       <p style="color: rgba(207, 239, 255, 0.8); margin-bottom: 20px;">
         Connect with other BOA fans, discuss theories, and chat with the authors!
       </p>
-      
-      <div class="chat-container">
-        <div class="chat-messages" id="chatMessages">
-        </div>
+
+      <div class="chat-container" aria-live="polite">
+        <div class="chat-messages" id="chatMessages" role="log" aria-live="polite" aria-atomic="false"></div>
         <div class="chat-input-area">
-          <input type="text" id="chatInput" placeholder="Type your message..." />
-          <button onclick="sendChatMessage()">Send</button>
+          <input type="text" id="chatInput" placeholder="Type your message..." aria-label="Chat message input" />
+          <button onclick="sendChatMessage()" aria-label="Send chat message">Send</button>
         </div>
       </div>
     </div>
@@ -1028,16 +424,16 @@
 
 <!-- ========== BACKGROUND MUSIC PLAYER ========== -->
 <audio id="backgroundMusic" loop>
-  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg" />
 </audio>
 
-<div class="audio-player">
+<div class="audio-player" aria-hidden="false">
   <button class="audio-toggle-btn" id="audioToggleBtn" title="Toggle Background Music">🔊</button>
-  <span class="audio-status" id="audioStatus">Music ON</span>
+  <span class="audio-status" id="audioStatus">Music OFF</span>
 </div>
 
 <!-- ========== MAIN PAGE ========== -->
-<div id="mainPage" class="page-section active">
+<div id="mainPage" class="page-section active" aria-hidden="false">
 
   <!-- ========== LANDING SECTION ========== -->
   <section class="landing">
@@ -1062,40 +458,37 @@
         The <span class="highlight">Bureau of Assassination</span>—BOA—operates beyond borders, beyond law, and beyond denial.
       </p>
       <p class="summary-text">
-        When a covert operation deep beneath the earth goes <span class="highlight">catastrophically wrong</span>, BOA uncovers a <span class="highlight">weapon without limits</span>. 
-        A force powerful enough to rewrite global power.
+        When a covert operation deep beneath the earth goes <span class="highlight">catastrophically wrong</span>, BOA uncovers a <span class="highlight">weapon without limits</span>.
       </p>
       <p class="summary-text">
         <span class="highlight">Helicopters fall. Facilities burn. Classified assets vanish.</span>
       </p>
       <p class="summary-text">
-        The race against time stretches from underground bunkers to the vast expanse of space. 
-        The mission has begun. The truth is <span class="highlight">classified</span>. And <span class="highlight">nothing stays buried forever.</span>
+        The race against time stretches from underground bunkers to the vast expanse of space.
+        The mission has begun. The truth is <span class="highlight">classified</span>.
       </p>
     </div>
 
     <!-- ========== AUTHOR INFORMATION ========== -->
     <div class="card">
       <h2>✍️ The Architects</h2>
-      <p>
-        Two visionaries unite to bring you the Bureau of Assassination. Click on any author to learn more.
-      </p>
+      <p>Two visionaries unite to bring you the Bureau of Assassination. Click on any author to learn more.</p>
       <div class="authors-grid">
-        <div class="author-card" onclick="showAuthorDetail('juan')" style="cursor: pointer;">
+        <div class="author-card" onclick="showAuthorDetail('juan')">
           <h3>Juan Shijo</h3>
           <div class="author-role">Main Author</div>
           <div class="author-aura">
-            The visionary architect behind the BOA universe. Creator of the classified operations, 
-            the world-shattering conspiracy, and the dark military-tech aesthetic that defines this thriller.
+            The visionary architect behind the BOA universe. Creator of the classified operations, the world-shattering conspiracy,
+            and the dark military-tech aesthetic that defines this thriller.
           </div>
           <p style="color: var(--neon-cyan); font-size: 12px; margin-top: 15px;">Click to view details →</p>
         </div>
-        <div class="author-card" onclick="showAuthorDetail('evan')" style="cursor: pointer;">
+
+        <div class="author-card" onclick="showAuthorDetail('evan')">
           <h3>Evan David Albert</h3>
           <div class="author-role">Co-Author</div>
           <div class="author-aura">
-            The collaborator shaping the conspiracy-driven intensity. Together, they weave a tale of 
-            betrayal, power, and survival that will grip readers from the first page.
+            The collaborator shaping the conspiracy-driven intensity of the BOA universe.
           </div>
           <p style="color: var(--neon-cyan); font-size: 12px; margin-top: 15px;">Click to view details →</p>
         </div>
@@ -1107,12 +500,12 @@
       <h2>🔐 Classified Encryption Tool</h2>
       <p>
         Access the BOA secure encryption terminal. Enter a number and encryption key to <span class="highlight">encode classified data</span>.
-        This tool uses XOR encryption—a simple yet powerful method for securing sensitive intelligence.
+        This tool uses XOR encryption—a simple demo method (not secure for real secrets).
       </p>
-      
+
       <div class="encryption-controls">
-        <input id="inputNumber" placeholder="Enter number (e.g., 1234)" />
-        <input id="keyNumber" placeholder="Enter encryption key (e.g., 999)" />
+        <input id="inputNumber" placeholder="Enter number (e.g., 1234)" aria-label="Number to encrypt" />
+        <input id="keyNumber" placeholder="Enter encryption key (e.g., 999)" aria-label="Encryption key" />
       </div>
 
       <div class="button-group">
@@ -1120,20 +513,20 @@
         <button class="btn" id="decryptBtn">Decrypt</button>
       </div>
 
-      <div id="encOutput"></div>
+      <div id="encOutput" aria-live="polite"></div>
     </div>
 
     <!-- ========== AUDIO VISUALIZER ========== -->
     <div class="card">
       <h2>🎵 Live Intelligence Feed Visualizer</h2>
       <p>
-        Activate the audio frequency analyzer. Grant microphone access and watch the <span class="highlight">digital heartbeat</span> 
-        of the surveillance network pulse in real-time. Cyan and magenta bars dance to the rhythm of the operation.
+        Activate the audio frequency analyzer. Grant microphone access and watch the <span class="highlight">digital heartbeat</span>
+        of the surveillance network pulse in real-time.
       </p>
 
       <div class="visualizer-container">
         <button class="btn" id="startAudioBtn">Start Visualizer</button>
-        <canvas id="visualizerCanvas"></canvas>
+        <canvas id="visualizerCanvas" aria-hidden="false"></canvas>
       </div>
     </div>
 
@@ -1142,7 +535,8 @@
       <button class="nav-btn" onclick="showPage('releasePage')" style="margin-bottom: 15px;">📅 Release Dates</button>
       <p>
         <strong>Release Date:</strong> 10th February 2026<br>
-        <strong>Available on:</strong> <a href="https://www.amazon.com.au/BOA-Juan-Shijo-ebook/dp/B0GGZLY9M7/ref=sr_1_1?crid=JF1FBM7MRG53&dib=eyJ2IjoiMSJ9.mE9D7L14JjvP53bOtkG34gQNe4I5h_EYP20mpoBlYEwT9w5ywO3-5oSbMg9edTTP2afQh0NqRPUcp2Oy8V5WRzCNJTjNX1FvtOZolwzY9KSATJGZh8EAnLOx4z_S3q5Ozj6-YaNDAr3SdnZv2FkHMgHBZYLPfCUMER0qIpU7nOO9K_PgfemRorLd8xFPINIru21OC3B5DhUVGXyzIjV2k3BzCFV7ShSHtbwafCij6D8xQ_Vt-ZEsFpZozKgxsmg94Vc2I3KJmlQNBl22uGmDUcrVFSOalLGeDYxEeYlGXBk.HmGUeWnj94AC6tG5sPergXTusWJ2PD8TTVHcFWwtVWw&dib_tag=se&keywords=the+boa&qid=1768986537&sprefix=the+bo%2Caps%2C265&sr=8-1" class="footer-link" target="_blank">Amazon KDP</a>
+        <strong>Available on:</strong>
+        <a href="https://www.amazon.com.au/BOA-Juan-Shijo-ebook/dp/B0GGZLY9M7" class="footer-link" target="_blank" rel="noopener noreferrer">Amazon KDP</a>
       </p>
     </div>
 
@@ -1151,64 +545,69 @@
 </div>
 
 <!-- ========== AUTHOR DETAIL PAGE ========== -->
-<div id="authorPage" class="page-section">
+<div id="authorPage" class="page-section" aria-hidden="true">
   <div class="container">
     <button class="btn back-btn" onclick="showPage('mainPage')">← Back to Main</button>
-    
-    <div id="authorContent" class="card author-detail"></div>
+    <div id="authorContent" class="card author-detail" aria-live="polite"></div>
   </div>
 </div>
 
 <!-- ========== BOOKS PAGE ========== -->
-<div id="booksPage" class="page-section">
+<div id="booksPage" class="page-section" aria-hidden="true">
   <div class="container">
     <button class="btn back-btn" onclick="showPage('mainPage')">← Back to Main</button>
-    
     <div class="card">
       <h2>📚 The BOA Universe - Complete Book Series</h2>
       <p style="color: rgba(207, 239, 255, 0.8); font-size: 16px; margin-bottom: 20px;">
         Explore the complete BOA book series and its expansive universe of conspiracy, action, and intrigue.
       </p>
-      
-      <div class="books-grid" id="booksGrid"></div>
+      <div class="books-grid" id="booksGrid" aria-live="polite"></div>
     </div>
   </div>
 </div>
 
 <!-- ========== RELEASE DATES PAGE ========== -->
-<div id="releasePage" class="page-section">
+<div id="releasePage" class="page-section" aria-hidden="true">
   <div class="container">
     <button class="btn back-btn" onclick="showPage('mainPage')">← Back to Main</button>
-    
     <div class="card">
       <h2>📅 BOA Book Release Schedule</h2>
       <p style="color: rgba(207, 239, 255, 0.8); font-size: 16px; margin-bottom: 20px;">
         The timeline for the entire BOA series. Some titles are in development.
       </p>
-      
-      <div class="release-dates-grid" id="releaseDatesGrid"></div>
+      <div class="release-dates-grid" id="releaseDatesGrid" aria-live="polite"></div>
     </div>
   </div>
 </div>
 
 <script>
+  // ========== UTIL: Password hashing (SHA-256) ==========
+  // Note: client-side hashing is better than storing base64, but not a replacement for server-side authentication.
+  async function hashPassword(password) {
+    const enc = new TextEncoder();
+    const data = enc.encode(password);
+    const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+    // convert buffer to hex
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+  }
+
   // ========== BACKGROUND MUSIC CONTROL ==========
   const backgroundMusic = document.getElementById('backgroundMusic');
   const audioToggleBtn = document.getElementById('audioToggleBtn');
   const audioStatus = document.getElementById('audioStatus');
   let isMusicPlaying = false;
 
-  // Set volume to moderate level
   backgroundMusic.volume = 0.3;
 
-  audioToggleBtn.addEventListener('click', function() {
+  audioToggleBtn.addEventListener('click', function () {
     if (isMusicPlaying) {
       backgroundMusic.pause();
       audioToggleBtn.textContent = '🔇';
       audioStatus.textContent = 'Music OFF';
       isMusicPlaying = false;
     } else {
-      backgroundMusic.play().catch(function(error) {
+      backgroundMusic.play().catch(function (error) {
         console.log('Autoplay prevented. User interaction required.');
         audioStatus.textContent = 'Click to Play';
       });
@@ -1218,16 +617,14 @@
     }
   });
 
-  // Attempt to autoplay on page load with user interaction fallback
-  window.addEventListener('load', function() {
+  window.addEventListener('load', function () {
     const playPromise = backgroundMusic.play();
     if (playPromise !== undefined) {
-      playPromise.then(function() {
+      playPromise.then(function () {
         isMusicPlaying = true;
         audioToggleBtn.textContent = '🔊';
         audioStatus.textContent = 'Music ON';
-      }).catch(function(error) {
-        // Autoplay was prevented
+      }).catch(function () {
         console.log('Autoplay prevented, waiting for user interaction');
         audioStatus.textContent = 'Click to Play';
         audioToggleBtn.textContent = '🔇';
@@ -1235,14 +632,19 @@
     }
   });
 
-  // ========== ACCOUNT MANAGEMENT ==========
+  // ========== ACCOUNT MANAGEMENT (local demo only) ==========
+  // WARNING: This is a client-side demo only. Do NOT use for production authentication.
   let currentUser = null;
 
   function loadUserSession() {
     const savedUser = localStorage.getItem('boaCurrentUser');
     if (savedUser) {
-      currentUser = JSON.parse(savedUser);
-      updateProfileButton();
+      try {
+        currentUser = JSON.parse(savedUser);
+        updateProfileButton();
+      } catch (e) {
+        console.warn('Failed to parse saved session', e);
+      }
     }
   }
 
@@ -1251,31 +653,36 @@
     if (currentUser) {
       profileBtn.textContent = `👤 ${currentUser.username}`;
       profileBtn.style.background = 'linear-gradient(135deg, var(--neon-magenta), var(--neon-cyan))';
+    } else {
+      profileBtn.textContent = '👤 Account';
+      profileBtn.style.background = '';
     }
   }
 
   function toggleAuthModal() {
     if (currentUser) {
-      // User is logged in, show fan club
       showPage('fanClubPage');
     } else {
-      // User not logged in, show auth modal
       document.getElementById('authModal').classList.add('active');
+      // move focus into modal for accessibility
+      document.getElementById('loginEmail').focus();
     }
   }
 
   function closeAuthModal() {
     document.getElementById('authModal').classList.remove('active');
+    // restore focus
+    document.getElementById('profileBtn').focus();
   }
 
   function switchAuthTab(tab) {
-    // Update tab buttons
+    // Remove active from tabs & add to selected
     document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
-    event.target.classList.add('active');
+    const selected = document.querySelector(`.auth-tab[data-tab="${tab}"]`);
+    if (selected) selected.classList.add('active');
 
-    // Update forms
+    // Toggle forms
     document.querySelectorAll('.auth-form').forEach(f => f.classList.remove('active'));
-    
     if (tab === 'login') {
       document.getElementById('loginForm').classList.add('active');
     } else {
@@ -1283,16 +690,14 @@
     }
   }
 
-  function handleSignup(e) {
+  async function handleSignup(e) {
     e.preventDefault();
-
-    const username = document.getElementById('signupUsername').value;
-    const email = document.getElementById('signupEmail').value;
+    const username = document.getElementById('signupUsername').value.trim();
+    const email = document.getElementById('signupEmail').value.trim().toLowerCase();
     const password = document.getElementById('signupPassword').value;
     const confirm = document.getElementById('signupConfirm').value;
     const messageEl = document.getElementById('signupMessage');
 
-    // Validation
     if (password !== confirm) {
       messageEl.textContent = 'Passwords do not match!';
       messageEl.style.color = '#ff4444';
@@ -1305,25 +710,26 @@
       return;
     }
 
-    // Check if user exists
     const existingUsers = JSON.parse(localStorage.getItem('boaUsers') || '[]');
-    if (existingUsers.some(u => u.username === username || u.email === email)) {
+    if (existingUsers.some(u => u.username.toLowerCase() === username.toLowerCase() || u.email === email)) {
       messageEl.textContent = 'Username or email already exists!';
       messageEl.style.color = '#ff4444';
       return;
     }
 
-    // Create new user
+    // Hash password before storing (client-side hashing is NOT a substitute for server hashing)
+    const pwdHash = await hashPassword(password);
+
     const newUser = {
       username,
       email,
-      password: btoa(password) // Simple encoding (not secure for real apps)
+      passwordHash: pwdHash // store hash, not plain or base64
     };
 
     existingUsers.push(newUser);
     localStorage.setItem('boaUsers', JSON.stringify(existingUsers));
 
-    // Auto login
+    // Auto login (store only username & email in session)
     currentUser = { username, email };
     localStorage.setItem('boaCurrentUser', JSON.stringify(currentUser));
 
@@ -1334,20 +740,22 @@
       closeAuthModal();
       updateProfileButton();
       showPage('fanClubPage');
-    }, 1500);
+    }, 900);
   }
 
-  function handleLogin(e) {
+  async function handleLogin(e) {
     e.preventDefault();
-
-    const emailOrUsername = document.getElementById('loginEmail').value;
+    const emailOrUsernameRaw = document.getElementById('loginEmail').value.trim();
+    const emailOrUsername = emailOrUsernameRaw.includes('@') ? emailOrUsernameRaw.toLowerCase() : emailOrUsernameRaw;
     const password = document.getElementById('loginPassword').value;
     const messageEl = document.getElementById('loginMessage');
 
     const users = JSON.parse(localStorage.getItem('boaUsers') || '[]');
-    const user = users.find(u => 
-      (u.username === emailOrUsername || u.email === emailOrUsername) &&
-      btoa(password) === u.password
+    const pwdHash = await hashPassword(password);
+
+    const user = users.find(u =>
+      ((u.username === emailOrUsername) || (u.email === (emailOrUsername.toLowerCase()))) &&
+      u.passwordHash === pwdHash
     );
 
     if (!user) {
@@ -1356,7 +764,6 @@
       return;
     }
 
-    // Login successful
     currentUser = { username: user.username, email: user.email };
     localStorage.setItem('boaCurrentUser', JSON.stringify(currentUser));
 
@@ -1367,7 +774,7 @@
       closeAuthModal();
       updateProfileButton();
       showPage('fanClubPage');
-    }, 1500);
+    }, 700);
   }
 
   function handleLogout() {
@@ -1389,60 +796,90 @@
     localStorage.setItem('boaChatMessages', JSON.stringify(messages));
   }
 
+  // Build chat DOM safely (no innerHTML from user content)
   function refreshChatDisplay() {
     const messagesContainer = document.getElementById('chatMessages');
     if (!messagesContainer) return;
-    
     const messages = loadChatMessages();
-    
-    // Get current scroll position
+
     const wasAtBottom = messagesContainer.scrollHeight - messagesContainer.scrollTop <= messagesContainer.clientHeight + 100;
-    
-    // Clear container
     messagesContainer.innerHTML = '';
-    
-    // Add initial system message if no messages
+
     if (messages.length === 0) {
       const systemMsg = document.createElement('div');
       systemMsg.className = 'chat-message';
-      systemMsg.innerHTML = `
-        <div class="message-user">📢 BOA System</div>
-        <div class="message-text">Welcome to the BOA Fan Club! This is an exclusive space for fans to discuss the series, share theories, and connect with the community.</div>
-      `;
+      const userDiv = document.createElement('div');
+      userDiv.className = 'message-user';
+      userDiv.textContent = '📢 BOA System';
+      const textDiv = document.createElement('div');
+      textDiv.className = 'message-text';
+      textDiv.textContent = 'Welcome to the BOA Fan Club! This is an exclusive space for fans to discuss the series, share theories, and connect with the community.';
+      systemMsg.appendChild(userDiv);
+      systemMsg.appendChild(textDiv);
       messagesContainer.appendChild(systemMsg);
       return;
     }
 
-    // Display all messages
     messages.forEach((msg, index) => {
       const messageEl = document.createElement('div');
-      
-      // Check if message belongs to current user
       const isOwnMessage = currentUser && msg.username === currentUser.username;
       messageEl.className = isOwnMessage ? 'chat-message own' : 'chat-message';
       messageEl.id = `msg-${index}`;
-      
-      // Action buttons (only for own messages)
-      let actionButtons = '';
-      if (isOwnMessage) {
-        actionButtons = `
-          <div style="margin-top: 8px; display: flex; gap: 8px; font-size: 11px;">
-            <button onclick="editMessage(${index})" style="background: rgba(0, 255, 234, 0.3); border: none; color: var(--neon-cyan); padding: 4px 8px; border-radius: 4px; cursor: pointer;">✏️ Edit</button>
-            <button onclick="deleteMessage(${index})" style="background: rgba(255, 0, 214, 0.3); border: none; color: var(--neon-magenta); padding: 4px 8px; border-radius: 4px; cursor: pointer;">🗑️ Delete</button>
-          </div>
-        `;
+
+      const userDiv = document.createElement('div');
+      userDiv.className = 'message-user';
+      userDiv.textContent = msg.username + (isOwnMessage ? ' (You)' : '');
+      messageEl.appendChild(userDiv);
+
+      const textDiv = document.createElement('div');
+      textDiv.className = 'message-text';
+      textDiv.textContent = msg.text; // safe insertion via textContent
+      messageEl.appendChild(textDiv);
+
+      if (msg.edited) {
+        const editedNote = document.createElement('div');
+        editedNote.style.fontSize = '10px';
+        editedNote.style.color = 'rgba(207, 239, 255, 0.5)';
+        editedNote.style.marginTop = '4px';
+        editedNote.textContent = '(edited)';
+        messageEl.appendChild(editedNote);
       }
-      
-      messageEl.innerHTML = `
-        <div class="message-user">${msg.username}${isOwnMessage ? ' (You)' : ''}</div>
-        <div class="message-text">${msg.text}</div>
-        ${msg.edited ? '<div style="font-size: 10px; color: rgba(207, 239, 255, 0.5); margin-top: 4px;">(edited)</div>' : ''}
-        ${actionButtons}
-      `;
+
+      if (isOwnMessage) {
+        const actions = document.createElement('div');
+        actions.style.marginTop = '8px';
+        actions.style.display = 'flex';
+        actions.style.gap = '8px';
+        actions.style.fontSize = '11px';
+
+        const editBtn = document.createElement('button');
+        editBtn.textContent = '✏️ Edit';
+        editBtn.style.background = 'rgba(0, 255, 234, 0.3)';
+        editBtn.style.border = 'none';
+        editBtn.style.color = 'var(--neon-cyan)';
+        editBtn.style.padding = '4px 8px';
+        editBtn.style.borderRadius = '4px';
+        editBtn.style.cursor = 'pointer';
+        editBtn.addEventListener('click', () => editMessage(index));
+
+        const deleteBtn = document.createElement('button');
+        deleteBtn.textContent = '🗑️ Delete';
+        deleteBtn.style.background = 'rgba(255, 0, 214, 0.3)';
+        deleteBtn.style.border = 'none';
+        deleteBtn.style.color = 'var(--neon-magenta)';
+        deleteBtn.style.padding = '4px 8px';
+        deleteBtn.style.borderRadius = '4px';
+        deleteBtn.style.cursor = 'pointer';
+        deleteBtn.addEventListener('click', () => deleteMessage(index));
+
+        actions.appendChild(editBtn);
+        actions.appendChild(deleteBtn);
+        messageEl.appendChild(actions);
+      }
+
       messagesContainer.appendChild(messageEl);
     });
 
-    // Scroll to bottom if user was at bottom before
     if (wasAtBottom) {
       setTimeout(() => {
         messagesContainer.scrollTop = messagesContainer.scrollHeight;
@@ -1453,20 +890,16 @@
   function editMessage(index) {
     const messages = loadChatMessages();
     const message = messages[index];
-    
     if (!currentUser || message.username !== currentUser.username) {
       alert('You can only edit your own messages!');
       return;
     }
-    
     const newText = prompt('Edit your message:', message.text);
     if (newText && newText.trim()) {
       messages[index].text = newText.trim();
       messages[index].edited = true;
       saveChatMessages(messages);
       refreshChatDisplay();
-      
-      // Send email notification
       sendEmailNotification(`${currentUser.username} edited a message`, `Updated message: "${newText}"`);
     }
   }
@@ -1474,47 +907,37 @@
   function deleteMessage(index) {
     const messages = loadChatMessages();
     const message = messages[index];
-    
     if (!currentUser || message.username !== currentUser.username) {
       alert('You can only delete your own messages!');
       return;
     }
-    
     if (confirm('Are you sure you want to delete this message?')) {
       messages.splice(index, 1);
       saveChatMessages(messages);
       refreshChatDisplay();
-      
-      // Send email notification
       sendEmailNotification(`${currentUser.username} deleted a message`, `Deleted: "${message.text}"`);
     }
   }
 
   function sendEmailNotification(subject, content) {
-    // Get all users
     const users = JSON.parse(localStorage.getItem('boaUsers') || '[]');
-    const allEmails = users.map(u => u.email).filter(email => email !== currentUser.email);
-    
-    // Simulate sending emails
-    if (allEmails.length > 0) {
-      const notification = {
-        from: currentUser.username,
-        fromEmail: currentUser.email,
-        to: allEmails,
-        subject: subject,
-        content: content,
-        timestamp: new Date().toISOString(),
-        sent: true
-      };
-      
-      // Store email log
-      let emailLog = JSON.parse(localStorage.getItem('boaEmailLog') || '[]');
-      emailLog.push(notification);
-      localStorage.setItem('boaEmailLog', JSON.stringify(emailLog));
-      
-      // Show notification to current user
-      showEmailSentNotification(subject, allEmails.length);
-    }
+    const allEmails = users.map(u => u.email).filter(email => currentUser ? email !== currentUser.email : true);
+    if (allEmails.length === 0) return;
+
+    const notification = {
+      from: currentUser ? currentUser.username : 'system',
+      fromEmail: currentUser ? currentUser.email : '',
+      to: allEmails,
+      subject: subject,
+      content: content,
+      timestamp: new Date().toISOString(),
+      sent: true
+    };
+
+    const emailLog = JSON.parse(localStorage.getItem('boaEmailLog') || '[]');
+    emailLog.push(notification);
+    localStorage.setItem('boaEmailLog', JSON.stringify(emailLog));
+    showEmailSentNotification(subject, allEmails.length);
   }
 
   function showEmailSentNotification(subject, recipientCount) {
@@ -1523,69 +946,49 @@
       position: fixed;
       top: 100px;
       right: 20px;
-      background: rgba(0, 255, 234, 0.2);
+      background: rgba(0, 255, 234, 0.12);
       border: 1px solid var(--neon-cyan);
       color: var(--neon-cyan);
       padding: 15px 20px;
       border-radius: 8px;
       z-index: 3000;
       font-size: 12px;
-      max-width: 300px;
+      max-width: 320px;
       box-shadow: 0 0 20px rgba(0, 255, 234, 0.3);
     `;
-    notification.innerHTML = `
-      📧 Email sent to ${recipientCount} fan club members<br>
-      <strong>${subject}</strong>
-    `;
+    const title = document.createElement('div');
+    title.style.fontWeight = '700';
+    title.textContent = `📧 Email sent to ${recipientCount} fan club members`;
+    const subj = document.createElement('div');
+    subj.style.marginTop = '6px';
+    subj.textContent = subject;
+    notification.appendChild(title);
+    notification.appendChild(subj);
+
     document.body.appendChild(notification);
-    
-    setTimeout(() => {
-      notification.remove();
-    }, 4000);
+    setTimeout(() => notification.remove(), 4000);
   }
 
   function sendChatMessage() {
     const input = document.getElementById('chatInput');
     const message = input.value.trim();
-
-    if (!message) {
-      console.log('Empty message');
-      return;
-    }
-    
+    if (!message) return;
     if (!currentUser) {
-      console.log('No current user');
       alert('You must be logged in to send messages');
       return;
     }
 
-    // Add message to storage
     const messages = loadChatMessages();
-    const newMessage = {
-      username: currentUser.username,
-      text: message,
-      timestamp: new Date().toISOString(),
-      edited: false
-    };
+    const newMessage = { username: currentUser.username, text: message, timestamp: new Date().toISOString(), edited: false };
     messages.push(newMessage);
     saveChatMessages(messages);
-
-    // Clear input
     input.value = '';
-
-    // Refresh display immediately
     refreshChatDisplay();
-    
-    // Send email notification to all fan club members
-    sendEmailNotification(
-      `New message from ${currentUser.username}`,
-      message
-    );
+    sendEmailNotification(`New message from ${currentUser.username}`, message);
   }
 
-  // Poll for new messages every 500ms for multi-user chat
+  // Poll for new messages (use WebSocket in production); lowered interval to 1500ms
   let chatRefreshInterval = null;
-
   function startChatRefresh() {
     if (chatRefreshInterval) clearInterval(chatRefreshInterval);
     chatRefreshInterval = setInterval(() => {
@@ -1593,9 +996,8 @@
       if (messagesContainer && document.getElementById('fanClubPage').classList.contains('active')) {
         refreshChatDisplay();
       }
-    }, 500);
+    }, 1500);
   }
-
   function stopChatRefresh() {
     if (chatRefreshInterval) {
       clearInterval(chatRefreshInterval);
@@ -1603,22 +1005,17 @@
     }
   }
 
-  // Allow sending messages with Enter key
-  document.addEventListener('DOMContentLoaded', function() {
+  // Enter key to send message
+  document.addEventListener('DOMContentLoaded', function () {
     const chatInput = document.getElementById('chatInput');
     if (chatInput) {
-      chatInput.addEventListener('keypress', function(e) {
+      chatInput.addEventListener('keydown', function (e) {
         if (e.key === 'Enter') {
+          e.preventDefault();
           sendChatMessage();
         }
       });
     }
-    
-    // Update fan club display
-    if (currentUser) {
-      document.getElementById('displayUsername').textContent = currentUser.username;
-    }
-
     loadUserSession();
     populateBooksGrid();
     populateReleaseDates();
@@ -1626,32 +1023,25 @@
 
   // ========== PAGE NAVIGATION ==========
   function showPage(pageId) {
-    // Hide all pages
     document.querySelectorAll('.page-section').forEach(page => {
       page.classList.remove('active');
+      page.setAttribute('aria-hidden', 'true');
     });
-    
-    // Show selected page
-    document.getElementById(pageId).classList.add('active');
-    
-    // Start chat refresh if going to fan club
+
+    const page = document.getElementById(pageId);
+    if (!page) return;
+    page.classList.add('active');
+    page.setAttribute('aria-hidden', 'false');
+
     if (pageId === 'fanClubPage') {
-      // Update username display
-      if (currentUser) {
-        document.getElementById('displayUsername').textContent = currentUser.username;
-      }
-      // Clear old messages and refresh
+      if (currentUser) document.getElementById('displayUsername').textContent = currentUser.username;
       const messagesContainer = document.getElementById('chatMessages');
-      if (messagesContainer) {
-        messagesContainer.innerHTML = '';
-      }
+      if (messagesContainer) messagesContainer.innerHTML = '';
       refreshChatDisplay();
       startChatRefresh();
     } else {
       stopChatRefresh();
     }
-    
-    // Scroll to top
     window.scrollTo(0, 0);
   }
 
@@ -1660,153 +1050,176 @@
     juan: {
       name: 'Juan Shijo',
       role: 'Main Author',
-      bio: 'Juan Shijo is the visionary architect behind the BOA universe. With a background in military thriller storytelling and high-tech narratives, Juan crafted the classified operations, the world-shattering conspiracy, and the dark military-tech aesthetic that defines this series.',
-      details: 'As the primary creator, Juan developed the core mythology of the Bureau of Assassination, designing intricate conspiracies that span continents, underground bunkers, and even space. His work emphasizes the tension between secrecy and survival, power and morality.',
+      bio: 'Juan Shijo is the visionary architect behind the BOA universe. With a background in military thriller storytelling and high-tech narratives, Juan crafted the classified operations and the world-shattering conspiracy.',
+      details: 'As the primary creator, Juan developed the core mythology of the Bureau of Assassination, designing intricate conspiracies across continents.',
       specialties: ['World Building', 'Conspiracy Narratives', 'Military Technology', 'Action Sequences']
     },
     evan: {
       name: 'Evan David Albert',
       role: 'Co-Author',
-      bio: 'Evan David Albert is the collaborator shaping the conspiracy-driven intensity of the BOA universe. His expertise in character development and psychological thriller elements brings depth to the narrative.',
-      details: 'Evan brings a mastery of human drama to the series, weaving tales of betrayal, power struggles, and survival that grip readers from the first page. Together with Juan, they create a universe that is both technically sophisticated and emotionally compelling.',
+      bio: 'Evan David Albert is the collaborator shaping the conspiracy-driven intensity of the BOA universe.',
+      details: 'Evan brings a mastery of human drama to the series, weaving tales of betrayal, power struggles, and survival.',
       specialties: ['Character Development', 'Plot Structure', 'Psychological Tension', 'Narrative Depth']
     }
   };
 
   function showAuthorDetail(authorKey) {
     const author = authors[authorKey];
+    if (!author) return;
     const authorContent = document.getElementById('authorContent');
-    
-    let specialtiesList = author.specialties.map(s => `• ${s}`).join('<br>');
-    
-    authorContent.innerHTML = `
-      <h2>${author.name}</h2>
-      <div style="margin: 30px 0; font-size: 16px;">
-        <p><strong>Role:</strong> ${author.role}</p>
-      </div>
-      <div class="detail-content">
-        <p><strong>About:</strong></p>
-        <p>${author.bio}</p>
-        <br>
-        <p><strong>Contributions to BOA:</strong></p>
-        <p>${author.details}</p>
-        <br>
-        <p><strong>Specialties:</strong></p>
-        <p>${specialtiesList}</p>
-      </div>
-    `;
-    
+    // Build DOM safely
+    authorContent.innerHTML = ''; // small allowed usage for controlled content
+    const h2 = document.createElement('h2');
+    h2.textContent = author.name;
+    const roleDiv = document.createElement('div');
+    roleDiv.style.margin = '30px 0';
+    roleDiv.style.fontSize = '16px';
+    roleDiv.innerHTML = `<p><strong>Role:</strong> ${author.role}</p>`; // role is internal; safe
+    const detailBox = document.createElement('div');
+    detailBox.className = 'detail-content';
+    detailBox.style.fontSize = '18px';
+    detailBox.style.color = 'rgba(207, 239, 255, 0.9)';
+    detailBox.style.lineHeight = '2';
+    detailBox.style.textAlign = 'left';
+    detailBox.style.background = 'rgba(0, 0, 0, 0.5)';
+    detailBox.style.padding = '30px';
+    detailBox.style.borderRadius = '12px';
+    detailBox.style.border = '1px solid rgba(255, 0, 214, 0.3)';
+
+    const about = document.createElement('p');
+    about.innerHTML = `<strong>About:</strong>`;
+    const aboutText = document.createElement('p');
+    aboutText.textContent = author.bio;
+
+    const contrib = document.createElement('p');
+    contrib.innerHTML = `<strong>Contributions to BOA:</strong>`;
+    const contribText = document.createElement('p');
+    contribText.textContent = author.details;
+
+    const specs = document.createElement('p');
+    specs.innerHTML = `<strong>Specialties:</strong>`;
+    const specsList = document.createElement('p');
+    specsList.innerHTML = author.specialties.map(s => `• ${s}`).join('<br>'); // internal data
+
+    detailBox.appendChild(about);
+    detailBox.appendChild(aboutText);
+    detailBox.appendChild(contrib);
+    detailBox.appendChild(contribText);
+    detailBox.appendChild(specs);
+    detailBox.appendChild(specsList);
+
+    authorContent.appendChild(h2);
+    authorContent.appendChild(roleDiv);
+    authorContent.appendChild(detailBox);
     showPage('authorPage');
   }
 
-  // ========== BOOKS DATA ==========
+  // ========== BOOKS & RELEASES ==========
   const books = [
-    { number: 1, title: 'The Bureau of Assassination', description: 'The first operation. Where it all begins.', amazonLink: 'https://www.amazon.com.au/BOA-Juan-Shijo-ebook/dp/B0GGZLY9M7/ref=sr_1_1?crid=JF1FBM7MRG53&dib=eyJ2IjoiMSJ9.mE9D7L14JjvP53bOtkG34gQNe4I5h_EYP20mpoBlYEwT9w5ywO3-5oSbMg9edTTP2afQh0NqRPUcp2Oy8V5WRzCNJTjNX1FvtOZolwzY9KSATJGZh8EAnLOx4z_S3q5Ozj6-YaNDAr3SdnZv2FkHMgHBZYLPfCUMER0qIpU7nOO9K_PgfemRorLd8xFPINIru21OC3B5DhUVGXyzIjV2k3BzCFV7ShSHtbwafCij6D8xQ_Vt-ZEsFpZozKgxsmg94Vc2I3KJmlQNBl22uGmDUcrVFSOalLGeDYxEeYlGXBk.HmGUeWnj94AC6tG5sPergXTusWJ2PD8TTVHcFWwtVWw&dib_tag=se&keywords=the+boa&qid=1768986537&sprefix=the+bo%2Caps%2C265&sr=8-1' },
+    { number: 1, title: 'The Bureau of Assassination', description: 'The first operation. Where it all begins.', amazonLink: 'https://www.amazon.com.au/BOA-Juan-Shijo-ebook/dp/B0GGZLY9M7' },
     { number: 2, title: 'N/A', description: 'Coming soon...', amazonLink: null },
-    { number: 3, title: 'N/A', description: 'Coming soon...', amazonLink: null },
-    { number: 4, title: 'N/A', description: 'Coming soon...', amazonLink: null },
-    { number: 5, title: 'N/A', description: 'Coming soon...', amazonLink: null },
-    { number: 6, title: 'N/A', description: 'Coming soon...', amazonLink: null },
-    { number: 7, title: 'N/A', description: 'Coming soon...', amazonLink: null },
-    { number: 8, title: 'N/A', description: 'Coming soon...', amazonLink: null },
-    { number: 9, title: 'N/A', description: 'Coming soon...', amazonLink: null }
+    { number: 3, title: 'N/A', description: 'Coming soon...', amazonLink: null }
   ];
 
-  // Populate books grid
   function populateBooksGrid() {
     const booksGrid = document.getElementById('booksGrid');
-    booksGrid.innerHTML = books.map((book, index) => {
-      const isAvailable = book.number === 1;
-      const statusClass = isAvailable ? 'available' : 'unavailable';
-      const statusText = isAvailable ? '✓ AVAILABLE' : '⏳ NOT FINISHED';
-      const buyButton = isAvailable ? `<a href="${book.amazonLink}" target="_blank" class="btn" style="display: inline-block; margin-top: 15px; text-decoration: none;">📚 Get on Amazon</a>` : '';
-      
-      return `
-        <div class="book-card">
-          <h3>Book ${book.number}</h3>
-          <p style="font-size: 16px; font-weight: bold; color: var(--neon-cyan); margin: 15px 0;">${book.title}</p>
-          <p>${book.description}</p>
-          <div class="book-status ${statusClass}">${statusText}</div>
-          ${buyButton}
-        </div>
-      `;
-    }).join('');
+    if (!booksGrid) return;
+    booksGrid.innerHTML = '';
+    books.forEach(book => {
+      const card = document.createElement('div');
+      card.className = 'book-card';
+      const h3 = document.createElement('h3'); h3.textContent = `Book ${book.number}`;
+      const title = document.createElement('p'); title.style.fontSize = '16px'; title.style.fontWeight = 'bold'; title.style.color = 'var(--neon-cyan)'; title.style.margin = '15px 0'; title.textContent = book.title;
+      const desc = document.createElement('p'); desc.textContent = book.description;
+      const status = document.createElement('div'); status.className = `book-status ${book.number === 1 ? 'available' : 'unavailable'}`; status.textContent = book.number === 1 ? '✓ AVAILABLE' : '⏳ NOT FINISHED';
+      card.appendChild(h3); card.appendChild(title); card.appendChild(desc); card.appendChild(status);
+      if (book.amazonLink) {
+        const buy = document.createElement('a'); buy.href = book.amazonLink; buy.target = '_blank'; buy.rel='noopener noreferrer'; buy.className = 'btn'; buy.style.display='inline-block'; buy.style.marginTop='15px'; buy.textContent = '📚 Get on Amazon';
+        card.appendChild(buy);
+      }
+      booksGrid.appendChild(card);
+    });
   }
 
-  // ========== RELEASE DATES DATA ==========
   const releaseSchedule = [
-    { number: 1, title: 'The Bureau of Assassination', date: '10/2/2026', status: 'Released', amazonLink: 'https://www.amazon.com.au/BOA-Juan-Shijo-ebook/dp/B0GGZLY9M7/ref=sr_1_1?crid=JF1FBM7MRG53&dib=eyJ2IjoiMSJ9.mE9D7L14JjvP53bOtkG34gQNe4I5h_EYP20mpoBlYEwT9w5ywO3-5oSbMg9edTTP2afQh0NqRPUcp2Oy8V5WRzCNJTjNX1FvtOZolwzY9KSATJGZh8EAnLOx4z_S3q5Ozj6-YaNDAr3SdnZv2FkHMgHBZYLPfCUMER0qIpU7nOO9K_PgfemRorLd8xFPINIru21OC3B5DhUVGXyzIjV2k3BzCFV7ShSHtbwafCij6D8xQ_Vt-ZEsFpZozKgxsmg94Vc2I3KJmlQNBl22uGmDUcrVFSOalLGeDYxEeYlGXBk.HmGUeWnj94AC6tG5sPergXTusWJ2PD8TTVHcFWwtVWw&dib_tag=se&keywords=the+boa&qid=1768986537&sprefix=the+bo%2Caps%2C265&sr=8-1' },
-    { number: 2, title: 'BOA: Underground', date: 'Not Finished', status: 'In Development', amazonLink: null },
-    { number: 3, title: 'BOA: Ascension', date: 'Not Finished', status: 'In Development', amazonLink: null },
-    { number: 4, title: 'BOA: Black Protocol', date: 'Not Finished', status: 'In Development', amazonLink: null },
-    { number: 5, title: 'BOA: Silent War', date: 'Not Finished', status: 'In Development', amazonLink: null },
-    { number: 6, title: 'BOA: Classified', date: 'Not Finished', status: 'In Development', amazonLink: null },
-    { number: 7, title: 'BOA: Endgame', date: 'Not Finished', status: 'In Development', amazonLink: null },
-    { number: 8, title: 'BOA: Revelation', date: 'Not Finished', status: 'In Development', amazonLink: null },
-    { number: 9, title: 'BOA: Final Operation', date: 'Not Finished', status: 'In Development', amazonLink: null }
+    { number: 1, title: 'The Bureau of Assassination', date: '10/2/2026', status: 'Released', amazonLink: 'https://www.amazon.com.au/BOA-Juan-Shijo-ebook/dp/B0GGZLY9M7' },
+    { number: 2, title: 'BOA: Underground', date: 'Not Finished', status: 'In Development', amazonLink: null }
   ];
 
-  // Populate release dates grid
   function populateReleaseDates() {
     const releaseDatesGrid = document.getElementById('releaseDatesGrid');
-    releaseDatesGrid.innerHTML = releaseSchedule.map((book) => {
-      const buyButton = book.amazonLink ? `<a href="${book.amazonLink}" target="_blank" class="nav-btn" style="margin-top: 12px; display: inline-block; text-decoration: none; font-size: 11px;">Get Book</a>` : '';
-      return `
-        <div class="release-card">
-          <h3>Book ${book.number}</h3>
-          <p style="font-size: 14px; color: rgba(207, 239, 255, 0.8); margin: 10px 0;">${book.title}</p>
-          <div class="release-date">${book.date}</div>
-          <div class="release-status">${book.status}</div>
-          ${buyButton}
-        </div>
-      `;
-    }).join('');
+    if (!releaseDatesGrid) return;
+    releaseDatesGrid.innerHTML = '';
+    releaseSchedule.forEach(book => {
+      const card = document.createElement('div'); card.className = 'release-card';
+      const h3 = document.createElement('h3'); h3.textContent = `Book ${book.number}`;
+      const title = document.createElement('p'); title.style.fontSize = '14px'; title.style.color = 'rgba(207, 239, 255, 0.8)'; title.style.margin='10px 0'; title.textContent = book.title;
+      const date = document.createElement('div'); date.className = 'release-date'; date.textContent = book.date;
+      const status = document.createElement('div'); status.className = 'release-status'; status.textContent = book.status;
+      card.appendChild(h3); card.appendChild(title); card.appendChild(date); card.appendChild(status);
+      if (book.amazonLink) {
+        const buy = document.createElement('a'); buy.href = book.amazonLink; buy.target = '_blank'; buy.rel = 'noopener noreferrer'; buy.className = 'nav-btn'; buy.style.marginTop='12px'; buy.style.display='inline-block'; buy.style.textDecoration='none'; buy.style.fontSize='11px'; buy.textContent = 'Get Book';
+        card.appendChild(buy);
+      }
+      releaseDatesGrid.appendChild(card);
+    });
   }
 
-  // Initialize pages on load
   document.addEventListener('DOMContentLoaded', function() {
     populateBooksGrid();
     populateReleaseDates();
   });
 
   // ========== ENCRYPTION TOOL ==========
-  function xorEncrypt(value, key) {
-    return value ^ key;
-  }
+  function xorEncrypt(value, key) { return value ^ key; }
 
   document.getElementById("encryptBtn").onclick = () => {
     const value = Number(document.getElementById("inputNumber").value);
     const key = Number(document.getElementById("keyNumber").value);
-    
+    const out = document.getElementById("encOutput");
     if (isNaN(value) || isNaN(key)) {
-      document.getElementById("encOutput").innerText = "ERROR: Invalid input. Please enter valid numbers.";
+      out.textContent = "ERROR: Invalid input. Please enter valid numbers.";
       return;
     }
-    
     const encrypted = xorEncrypt(value, key);
-    document.getElementById("encOutput").innerText = `🔐 ENCRYPTED: ${encrypted}`;
+    out.textContent = `🔐 ENCRYPTED: ${encrypted}`;
   };
 
   document.getElementById("decryptBtn").onclick = () => {
     const value = Number(document.getElementById("inputNumber").value);
     const key = Number(document.getElementById("keyNumber").value);
-    
+    const out = document.getElementById("encOutput");
     if (isNaN(value) || isNaN(key)) {
-      document.getElementById("encOutput").innerText = "ERROR: Invalid input. Please enter valid numbers.";
+      out.textContent = "ERROR: Invalid input. Please enter valid numbers.";
       return;
     }
-    
     const decrypted = xorEncrypt(value, key);
-    document.getElementById("encOutput").innerText = `🔓 DECRYPTED: ${decrypted}`;
+    out.textContent = `🔓 DECRYPTED: ${decrypted}`;
   };
 
-  // ========== AUDIO VISUALIZER ==========
+  // ========== AUDIO VISUALIZER (with cleanup) ==========
   let audioVisualizerActive = false;
+  let visualizerStream = null;
+  let visualizerAudioCtx = null;
 
   document.getElementById("startAudioBtn").onclick = async () => {
+    const btn = document.getElementById("startAudioBtn");
     if (audioVisualizerActive) {
-      document.getElementById("startAudioBtn").innerText = "Start Visualizer";
+      // Stop visualizer and cleanup
       audioVisualizerActive = false;
+      btn.innerText = "Start Visualizer";
+      try {
+        if (visualizerStream) {
+          visualizerStream.getTracks().forEach(t => t.stop());
+          visualizerStream = null;
+        }
+        if (visualizerAudioCtx) {
+          visualizerAudioCtx.close();
+          visualizerAudioCtx = null;
+        }
+      } catch (err) {
+        console.warn('Error stopping visualizer', err);
+      }
       return;
     }
 
@@ -1815,10 +1228,12 @@
       const ctx = canvas.getContext("2d");
 
       const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      visualizerAudioCtx = audioCtx;
       const analyser = audioCtx.createAnalyser();
       analyser.fftSize = 256;
 
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      visualizerStream = stream;
       const source = audioCtx.createMediaStreamSource(stream);
       source.connect(analyser);
 
@@ -1829,25 +1244,18 @@
       canvas.height = 250;
 
       audioVisualizerActive = true;
-      document.getElementById("startAudioBtn").innerText = "Stop Visualizer";
+      btn.innerText = "Stop Visualizer";
 
       function draw() {
         if (!audioVisualizerActive) return;
-
         requestAnimationFrame(draw);
         analyser.getByteFrequencyData(dataArray);
-
-        // Clear with dark background
         ctx.fillStyle = "rgba(5, 6, 11, 0.3)";
         ctx.fillRect(0, 0, canvas.width, canvas.height);
-
         const barWidth = (canvas.width / bufferLength) * 2.5;
         let x = 0;
-
         for (let i = 0; i < bufferLength; i++) {
           const barHeight = dataArray[i];
-          
-          // Alternate between cyan and magenta for a neon effect
           if (i % 2 === 0) {
             ctx.fillStyle = `rgba(0, 255, 234, ${0.5 + (barHeight / 255) * 0.5})`;
             ctx.shadowColor = "rgba(0, 255, 234, 0.8)";
@@ -1855,17 +1263,18 @@
             ctx.fillStyle = `rgba(255, 0, 214, ${0.5 + (barHeight / 255) * 0.5})`;
             ctx.shadowColor = "rgba(255, 0, 214, 0.8)";
           }
-          
           ctx.shadowBlur = 10;
           ctx.fillRect(x, canvas.height - barHeight / 2, barWidth, barHeight / 2);
           x += barWidth + 1;
         }
       }
-
       draw();
     } catch (error) {
       alert("Microphone access denied or not available. Please allow microphone permissions.");
       audioVisualizerActive = false;
+      visualizerStream = null;
+      if (visualizerAudioCtx) { visualizerAudioCtx.close(); visualizerAudioCtx = null; }
+      document.getElementById("startAudioBtn").innerText = "Start Visualizer";
     }
   };
 </script>
